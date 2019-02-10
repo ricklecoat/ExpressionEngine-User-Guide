@@ -89,3 +89,7 @@ NOTE: **Note:** Markdown formatting syntax is not processed within block-level H
 Span-level HTML tags — e.g. `<span>`, `<cite>`, or `<del>` — can be used anywhere in a Markdown paragraph, list item, or header. If you want, you can even use HTML tags instead of Markdown formatting; e.g. if you’d prefer to use HTML `<a>` or `<img>` tags instead of Markdown’s link or image syntax, go right ahead.
 
 TIP: **Tip:** Unlike block-level HTML tags, Markdown syntax **is** processed within span-level tags.
+
+## Extras
+
+John Gruber has made a [Markdown web dingus](https://daringfireball.net/projects/markdown/dingus) available at Daring Fireball that you can use to try out Markdown and practice getting to grips with the syntax.
