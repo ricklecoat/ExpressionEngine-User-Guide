@@ -90,6 +90,10 @@ Span-level HTML tags — e.g. `<span>`, `<cite>`, or `<del>` — can be used any
 
 TIP: **Tip:** Unlike block-level HTML tags, Markdown syntax **is** processed within span-level tags.
 
+### Auto-escaping for special characters
+
+xxxxxxxxx
+
 ## Extras
 
 John Gruber has made a [Markdown web dingus](https://daringfireball.net/projects/markdown/dingus) available at Daring Fireball that you can use to try out Markdown and practice getting to grips with the syntax.
