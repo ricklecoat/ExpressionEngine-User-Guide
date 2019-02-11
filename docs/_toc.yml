@@ -63,7 +63,7 @@
     - name: BBCode Reference
       href: general/bbcode.md
     - name: Markdown Reference
-      href: general/markdown-in-ee.md
+      href: general/markdown.md
     - name: Reserved Words
       href: general/reserved-words.md
     - name: Member XML Format

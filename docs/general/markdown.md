@@ -73,7 +73,7 @@ Blockquotes are indicated using email-style angle brackets (`>`). It is generall
 > id sem consectetuer libero luctus adipiscing.
 ```
 
-…but it’s also permissible to simply put the `>` before the first line of a hard-wrapped paragraph:
+…but it’s also permissible to simply put the `>` before just the first line of a hard-wrapped paragraph:
 
 ```
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
