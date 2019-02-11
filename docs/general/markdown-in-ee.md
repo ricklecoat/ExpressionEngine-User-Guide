@@ -116,6 +116,73 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 >     return shell_exec("echo $input | $markdown_script");
 ```
 
+### Lists
+
+Markdown in ExpressionEngine supports ordered (numbered) and unordered (bulleted) lists. List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab.
+
+Unordered lists use asterisks, pluses, and hyphens — interchangably — as list markers. In other words, the following three code blocks:
+
+```
+* Red
+* Green
+* Blue
+```
+
+```
+- Red
+- Green
+- Blue
+```
+
+```
++ Red
++ Green
++ Blue
+```
+
+…are equivalent, and will each convert to:
+
+```html
+<ul>
+	<li>Red</li>
+	<li>Green</li>
+	<li>Blue</li>
+</ul>
+```
+
+Ordered lists use numbers followed by periods. It's worth noting that the actual numbers used have no impact on the generated HTML, with the exception of the _first_ number (see Tip below). So the following code blocks:
+
+```
+1.  Car
+2.  Plane
+3.  Ship
+```
+```
+1.  Car
+7.  Plane
+2.  Ship
+```
+```
+1.  Car
+1002.  Plane
+27.  Ship
+```
+
+…are equivalent and will generate
+
+```html
+<ol>
+	<li>Car</li>
+	<li>Plane</li>
+	<li>Ship</li>
+</ol>
+```
+
+TIP: **Tip:** If an ordered list starts with a number different than 1, Markdown will honor that in the HTML output by applying a `start` attribute to the opening tag. So an unordered list in Markdown that starts with `5. Car` will output an opening tag of `<ol start="5">`. This allows you to continue a list after (for example) an intervening paragraph of text.
+
+
+
+
 ## Span elements
 
 [TOC=3]
