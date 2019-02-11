@@ -27,38 +27,40 @@ For more information about the philosophy and concepts behind Markdown, visit th
 
 ### What Markdown is not
 
-Markdown is not intended as a replacement for HTML, but to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a writing format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
+Markdown is not intended as a replacement for HTML, but to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
 
-## Basic syntax
+## Block elements
 
 [TOC=3]
 
-### Paragraphs, Headers and Blockquotes
+### Paragraphs
 
-A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line — a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.
+A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line; a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.
 
-To insert a simple `<br>`-type line break rather than start a new paragraph, simply finish your text with two spaces and followed by a _single_ carriage return.
+To insert a simple `<br>`-type line break rather than start a new paragraph, simply finish your text with two spaces, followed by a _single_ carriage return.
 
-To create a Header of the type `<h1>`-`<h6>` simply put 1-6 hash marks (#) at the beginning of the line. The number of hashes equals the resulting HTML header level.
+### Headers
 
-```md
-# This is an H1
-## This is an H2
-### This is an H3
-(etc)
-```
+To create a Header of the type H1-H6 simply put 1-6 hash marks (`#`) at the beginning of the line. The number of hashes equals the resulting HTML header level.
+
+	# This is an H1
+	## This is an H2
+	### This is an H3
+	(etc)
 
 Additionally, `<h1>` and `<h2>` Headers can optionally be created by “underlining” with equal signs (`=`) and hyphens (`-`), respectively.
 
-```md
-This is an H1
-=============
+    ```
+    This is an H1
+    =============
 
-This is an H2
--------------
-```
+    This is an H2
+    -------------
+    ```
 
-Any number of underlining =’s or -’s will work.
+Any number of the underlining characters (`=` or `-`) will work.
+
+### Blockquotes
 
 Blockquotes are indicated using email-style angle brackets (`>`). It is generally more readable to hard wrap the text and put a `>` before every line:
 
@@ -113,6 +115,19 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 >
 >     return shell_exec("echo $input | $markdown_script");
 ```
+
+## Span elements
+
+[TOC=3]
+
+### Item 1
+
+xxxxxxxxx
+
+### Item 2
+
+xxxxxxxxx
+
 
 ## More advanced syntax
 
