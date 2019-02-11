@@ -168,7 +168,7 @@ Ordered lists use numbers followed by periods. It's worth noting that the actual
 27.  Ship
 ```
 
-…are equivalent and will generate
+…are equivalent and will generate the exact same HTML output, namely:
 
 ```html
 <ol>
@@ -179,6 +179,49 @@ Ordered lists use numbers followed by periods. It's worth noting that the actual
 ```
 
 TIP: **Tip:** If an ordered list starts with a number different than 1, Markdown will honor that in the HTML output by applying a `start` attribute to the opening tag. So an unordered list in Markdown that starts with `5. Car` will output an opening tag of `<ol start="5">`. This allows you to continue a list after (for example) an intervening paragraph of text.
+
+List items may consist of multiple paragraphs. If you put blank lines between items, you’ll get `<p>` tags for the list item text. You can create multi-paragraph list items by indenting the paragraphs by 4 spaces or 1 tab: Each subsequent paragraph in a list item must be indented by either 4 spaces or one tab.
+
+Putting blank lines between list items (either above or below) will give you `<p>` tags for the list item text.
+
+```
+- Eggs
+
+- Ham
+
+- Coffee
+```
+```HTML
+<ul>
+	<li><p>Eggs</p></li>
+	<li><p>Ham</p></li>
+	<li><p>Coffee</p></li>
+</ul>
+```
+
+To get multiple paragraphs within a list item, indent the paragraphs by 4 spaces (or 1 tab).
+
+```
+1. This will be a list item with multiple paragraphs.
+
+    See? Here’s a second paragraph.
+
+2. And this is another list item (wrapped in a paragraph tag because of the spacer line above it).
+3. This list item, however, is NOT wrapped in a paragraph.
+```
+Outputs:
+```HTML
+<ol>
+	<li>
+		<p>This will be a list item with multiple paragraphs.</p>
+		<p>See? Here’s a second paragraph.</p>
+	</li>
+	<li>
+		<p>And this is another list item (wrapped in a paragraph tag because of the spacer line above it).</p>
+	</li>
+	<li>This list item, however, is NOT wrapped in a paragraph.</li>
+</ol>
+```
 
 
 
