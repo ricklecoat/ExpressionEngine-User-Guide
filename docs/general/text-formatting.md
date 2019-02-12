@@ -34,7 +34,7 @@ NOTE: **Note:** By default, all entries and comments are assigned to this format
 
 The _Markdown_ option parses all of your content through [a Markdown parser](http://michelf.ca/projects/php-markdown/extra/) and [a SmartyPants parser](http://michelf.ca/projects/php-smartypants/)—the parser follows [Jon Gruber's implementation of Markdown](http://daringfireball.net/projects/markdown/) for the most part, but adds a few things as well. SmartyPants transforms normal quotes into curly quotes, consecutive dashes into en (`--` into –) and em (`---` into `—`) dashes, and three consecutive periods into an ellipsis (`...` into `…`).
 
-A full summary of [EE’s Markdown syntax](general/markdown-in-ee.md) is available.
+A full summary of [EE’s Markdown syntax](general/markdown.md) is available.
 
 ## Auto BR
 
