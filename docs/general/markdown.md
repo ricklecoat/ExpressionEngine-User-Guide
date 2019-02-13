@@ -259,8 +259,6 @@ soft unsegmented body and live in aquatic or damp
 habitats, and most kinds have an external calcareous shell.
 ```
 
-### Nesting lists
-
 ### Paragraphs in list items
 
 List items can contain paragraphs. If you put blank lines between items, you’ll get `<p>` tags wrapped around the list item text:
@@ -328,6 +326,33 @@ To put a code block within a list item, the code block needs to be indented *twi
 
         <some code inside a list item>
 ```
+
+### Nesting lists
+
+Lists can be nested, placing a new list inside a list item. To do so, simply indent the list item(s) of he nested lists by 4 spaces or 1 tab. The type of list that you nest in this way need not be of the same type as the parent list.
+
+~~~markdown
+- First list item
+- Second list item
+    1. First nested list item
+    2. Second nested list item
+    3. Third nested list item
+- Third list item
+~~~
+~~~html
+<ul>
+	<li>First list item</li>
+	<li>Second list item</li>
+	    <ol>
+			<li>First nested list item</li>
+		    <li>Second nested list item</li>
+		    <li>Third nested list item</li>
+		</ol>
+	<li>Third list item</li>
+</ul>
+~~~
+
+WARN: **Warning:** Do not double-indent in this way (8 spaces or two tabs) or else you will trigger a [code block](#code-blocks-in-list-items).
 
 
 
