@@ -113,6 +113,96 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 >     return shell_exec("echo $input | $markdown_script");
 ```
 
+## Showing code
+
+[TOC=3]
+
+### Inline code
+
+A span of inline text can be marked as code by surrounding it with ‘backtick’ quotes. The span will be wrapped in `<code>…</code>` tags and any ampersands (&) and angle brackets (< or >) will automatically be translated into HTML entities. This makes it easy to use Markdown to write about HTML example code. So:
+```markdown
+This is regular text with `a demonstration <a href="#"> tag` placed in the middle.
+```
+Becomes:
+~~~html
+<p>This is regular text with <code>a demonstration &lt;a href="#"&gt; tag</code> placed in the middle.</p>
+~~~
+
+### Code blocks, indented
+
+Pre-formatted code blocks are used for writing about programming or markup source code. Rather than forming normal paragraphs, the lines of a code block are interpreted literally. As with inline code, ampersands and angle brackets will be turned into HTML entities. In addition, Markdown wraps a code block in both `<pre>` and `<code>` tags.
+
+Code blocks can be delineated in several ways. The first and simplest way is to simply indent the block by 4 spaces, or 1 tab.
+~~~markdown
+This is a normal paragraph
+
+    And this is a <code block>.
+~~~
+Which becomes:
+~~~HTML
+<p>This is a normal paragraph</p>
+
+<pre><code>And this is a &lt;code block&gt;.
+</code></pre>
+~~~
+A code block delineated by indentation in this way continues until it reaches a line that is not indented (or the end of the article).
+
+NOTE: **Note:** One level of indentation — 4 spaces or 1 tab — is removed from each line output by a code block created by this ‘indentation’ method. So a line indented by 8 spaces in Markdown will be indented by 4 spaces in the HTML.
+
+### Code blocks, fenced
+
+An alternative, and arguably more flexible, way to delineate code blocks is by ‘fencing’ them. Fenced code blocks are like Markdown’s regular code blocks, except that they’re _not_ indented and instead rely on start and end fence lines to delimit the code block. The code block starts with a line containing three or more tilde (~) characters, and ends with the first line with the _same_ number of tilde characters. For instance:
+```markdown
+This paragraph precedes...
+
+~~~
+...a one-line code block
+~~~
+```
+
+You can, optionally, use backtick (`) characters instead of tilde.
+
+~~~markdown
+```
+This is also a one-line code block
+```
+~~~
+
+Fenced code blocks have some advantages over their indented counterparts. They are ideal if you need to paste some code into an editor that lacks a convenient command to indent multiple lines at once, like a text box in a web browser — eg. an entry field in the ExpressionEngine control panel.
+
+Also, they can be used immediately following a list, whereas indented code blocks cannot (because Markdown would view the indent as signifying a paragraph in the list — see [Paragraphs in list items](#paragraphs-in-list-items)). Like so:
+
+```markdown
+1.  List item
+
+	Not an indented codeblock, but a second paragraph
+	in the list item.
+
+~~~
+But this IS a code block.
+~~~
+```
+
+Lastly, fenced code blocks allow you to specify a class name that will apply to a code block — useful if you want to assign language-specific styling, or to tell a syntax highlighter what syntax to use. To do so, simply place a class name at the end of the opening code fence. It can be preceded by a dot, but this is not required.
+
+
+```
+~~~.html
+<div>
+	<p>The monkey climbed the <em>enormous</em> tree.</p>
+</div>
+~~~
+```
+
+You can also use a [special attribute block](#special-attributes):
+
+```
+~~~ {.html #example-1}
+<p>This link takes you <a href="http://amazing.com">somewhere amazing</a>, so click it!</p>
+~~~
+```
+
+
 ## Lists
 
 [TOC=3]
@@ -399,6 +489,10 @@ TIP: **Tip:** Unlike block-level HTML tags, Markdown syntax **is** processed wit
 ### Auto-escaping for special characters
 
 xxxxxxxxx
+
+### Special attributes
+
+xxxxxxxxxx
 
 ## Extras
 
