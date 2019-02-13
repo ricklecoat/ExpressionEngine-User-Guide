@@ -62,7 +62,7 @@ Any number of the underlining characters (`=` or `-`) will work.
 
 ### Blockquotes
 
-Blockquotes are indicated using email-style angle brackets (`>`). It is generally more readable to hard wrap the text and put a `>` before every line:
+Blockquotes are indicated using email-style angle brackets (`>`). It is generally more readable to hard wrap the text and put a `>` before every line, but it’s also permissible to simply put the `>` before just the first line of a hard-wrapped paragraph. Either of the following two code blocks:
 
 ```
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
@@ -72,9 +72,6 @@ Blockquotes are indicated using email-style angle brackets (`>`). It is generall
 > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 > id sem consectetuer libero luctus adipiscing.
 ```
-
-…but it’s also permissible to simply put the `>` before just the first line of a hard-wrapped paragraph:
-
 ```
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
@@ -84,7 +81,7 @@ Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 id sem consectetuer libero luctus adipiscing.
 ```
 
-Either of the above methods will generate the following:
+…will generate the following HTML:
 
 ```html
 <blockquote>
@@ -95,17 +92,17 @@ Either of the above methods will generate the following:
 
 Blockquotes can be nested within each other simply by adding additional levels of angled brackets:
 
-```markdown
+~~~markdown
 > This is the first level of quoting.
 >
 > > This is nested blockquote.
 >
 > Back to the first level.
-```
+~~~
 
 Additionally, Blockquotes can contain other Markdown elements, such as Headers, lists, code blocks, etc.
 
-```
+~~~
 > ## This is a header.
 >
 > 1.   This is the first list item.
@@ -114,7 +111,7 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 > Here's some example code:
 >
 >     return shell_exec("echo $input | $markdown_script");
-```
+~~~
 
 ## Lists
 
