@@ -29,7 +29,7 @@ For more information about the philosophy and concepts behind Markdown, visit th
 
 Markdown is not intended as a replacement for HTML, but to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
 
-## Block elements
+## Paragraphs, Headers and Blockquotes
 
 [TOC=3]
 
@@ -64,7 +64,7 @@ Any number of the underlining characters (`=` or `-`) will work.
 
 Blockquotes are indicated using email-style angle brackets (`>`). It is generally more readable to hard wrap the text and put a `>` before every line, but it’s also permissible to simply put the `>` before just the first line of a hard-wrapped paragraph. Either of the following two code blocks:
 
-```
+```markdown
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 > Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
@@ -72,7 +72,7 @@ Blockquotes are indicated using email-style angle brackets (`>`). It is generall
 > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 > id sem consectetuer libero luctus adipiscing.
 ```
-```
+```markdown
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
@@ -92,17 +92,17 @@ id sem consectetuer libero luctus adipiscing.
 
 Blockquotes can be nested within each other simply by adding additional levels of angled brackets:
 
-~~~markdown
+```markdown
 > This is the first level of quoting.
 >
 > > This is nested blockquote.
 >
 > Back to the first level.
-~~~
+```
 
 Additionally, Blockquotes can contain other Markdown elements, such as Headers, lists, code blocks, etc.
 
-~~~
+```markdown
 > ## This is a header.
 >
 > 1.   This is the first list item.
@@ -111,7 +111,7 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 > Here's some example code:
 >
 >     return shell_exec("echo $input | $markdown_script");
-~~~
+```
 
 ## Lists
 
@@ -184,7 +184,7 @@ The colon is the list marker, and follows the standard rules for list markers: i
 
 Further terms must be separated from the previous definition by a blank line.
 
-```
+```markdown
 Apple
 :  Pomaceous fruit of plants of the genus Malus in
    the family Rosaceae.
@@ -328,15 +328,15 @@ To put a code block within a list item, the code block needs to be indented *twi
 
 Lists can be nested, placing a new list inside a list item. To do so, simply indent the list item(s) of he nested lists by 4 spaces or 1 tab. The type of list that you nest in this way need not be of the same type as the parent list.
 
-~~~markdown
+```markdown
 - First list item
 - Second list item
     1. First nested list item
     2. Second nested list item
     3. Third nested list item
 - Third list item
-~~~
-~~~html
+```
+```html
 <ul>
 	<li>First list item</li>
 	<li>Second list item</li>
@@ -347,7 +347,7 @@ Lists can be nested, placing a new list inside a list item. To do so, simply ind
 		</ol>
 	<li>Third list item</li>
 </ul>
-~~~
+```
 
 WARN: **Warning:** Do not double-indent in this way (8 spaces or two tabs) or else you will trigger a [code block](#code-blocks-in-list-items).
 
