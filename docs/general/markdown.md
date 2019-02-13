@@ -113,7 +113,7 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 >     return shell_exec("echo $input | $markdown_script");
 ```
 
-## Showing code
+## Code
 
 [TOC=3]
 
@@ -440,6 +440,72 @@ Lists can be nested, placing a new list inside a list item. To do so, simply ind
 ```
 
 WARN: **Warning:** Do not double-indent in this way (8 spaces or two tabs) or else you will trigger a [code block](#code-blocks-in-list-items).
+
+## Tables
+
+Markdown lets you easily create basic tables with a simple syntax. A ‘basic’ table is constructed like so:
+
+~~~markdown
+First header | Second header
+------------ | -------------
+Content cell | Content cell
+Content cell | Content cell
+~~~
+
+The first line contains column headers; the second line contains a mandatory separator line between the headers and the content; each following line is a row in the table. Columns are always separated by the pipe (|) character. The above Markdown code generates the following HTML:
+
+~~~html
+<table>
+<thead>
+<tr>
+  <th>First Header</th>
+  <th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Content Cell</td>
+  <td>Content Cell</td>
+</tr>
+<tr>
+  <td>Content Cell</td>
+  <td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+~~~
+
+You can include leading and trailing pipe characters to each line if you wish. They are not required, but can help make a table _look_ more like a table. The following Markdown generates the exact same output as the example above:
+
+~~~markdown
+| First header | Second header |
+| ------------ | ------------- |
+| Content cell | Content cell  |
+| Content cell | Content cell  |
+~~~
+
+NOTE: **Note:** A table need _at least_ one pipe on each line for Markdown Extra to parse it correctly. This means that the only way to create a one-column table is to add a leading or a tailing pipe, or both of them, to each line.
+
+You can specify alignment for each column by adding colons to separator lines. A colon at the left of the separator line will make the column left-aligned; a colon on the right of the line will make the column right-aligned; colons at both side means the column is center-aligned. The `align` HTML attribute is applied to each cell of the concerned column.
+
+In this example, the prices in the second column will be right-aligned.
+
+~~~markdown
+| Item      | Value |
+| --------- | -----:|
+| Computer  | $1600 |
+| Phone     | $12   |
+| Pipe      | $1    |
+~~~
+
+You can apply span-level formatting to the content of each cell using regular Markdown syntax:
+
+~~~markdown
+| Function name | Description                    |
+| ------------- | ------------------------------ |
+| `help()`      | Display the help window.       |
+| `destroy()`   | **Destroy your computer!**     |
+~~~
 
 
 
