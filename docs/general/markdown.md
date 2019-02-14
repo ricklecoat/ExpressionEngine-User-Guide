@@ -576,9 +576,98 @@ When * or _ are surrounded with spaces they will always be treated as literal as
 \*Some text surrounded by literal asterisks\*
 ~~~
 
-### Item 2
+### Links, inline
 
-xxxxxxxxx
+Markdown allows links to be created in two different styles: _Inline_ and _Reference_.
+
+In both styles the link text is delineated by [square brackets].
+
+To create an _Inline_ link, place regular parentheses immediately after the link text’s closing square bracket. Inside the parentheses, put the URL where you want the link to point, along with an optional title for the link, surrounded in quotes. For example:
+
+~~~markdown
+This is [an example](http://example.com/ "Title") inline link.
+[This link](http://example.net/) has no title attribute.
+~~~
+Will produce:
+~~~html
+<p>This is <a href="http://example.com/" title="Title"> an example</a> inline link.</p>
+<p><a href="http://example.net/">This link</a> has no title attribute.</p>
+~~~
+
+As with regular HTML, relative paths are permitted for local resources on the same server.
+
+### Links, reference
+
+_Reference-style_ links use a second pair of square brackets, inside of which you place a label of your own choosing to identify the link. The two squares of brackets may, optionally, be separated by a space if you wish.
+
+~~~markdown
+This is [an example][id] reference-style link.
+This is [an example] [id] reference-style link.
+~~~
+
+Then you define the link itself like so:
+~~~markdown
+[id]: http://example.com "Optional title for the link"
+~~~
+
+The link definition(s) can be placed anywhere you like in your document. They are only used for creating links during Markdown processing, and are stripped from your document in the HTML output.
+
+The URL portion of the link definition may, optionally, be surrounded by angle brackets and the title part can be enclosed in double quotes or standard parentheses. Additionally, you can put the title attribute on the next line and use extra spaces or tabs for padding — which tends to look better with longer URLs.
+
+The following four link definitions, therefore, are equivalent:
+~~~markdown
+[foo]: http://example.com "Optional title for the link"
+[foo]: http://example.com (Optional title for the link)
+[foo]: <http://example.com> "Optional title for the link"
+[foo]: http://example.com/significantly/longer/path/to/resources/than-is-comfortable
+       (Optional title for the link)
+~~~
+
+Link definition names may consist of letters, numbers, spaces, and punctuation. They are **not** case sensitive.
+
+The implicit link name shortcut allows you to omit the name of the link, in which case the link text itself is used as the name. Just use an empty set of square brackets — e.g., to link the word “Google” to the google.com web site, you could simply write:
+
+~~~markdown
+[Google][]
+~~~
+
+And then define the link:
+
+~~~markdown
+[Google]: http://google.com
+~~~
+
+The ‘implicit link name’ trick works even if the link text has spaces in it:
+
+~~~markdown
+[Awesome website][]
+~~~
+~~~markdown
+[Awesome website]: http://example.com "Visit the awesome website"
+~~~
+
+As previously noted, link definitions can be placed anywhere in your document, as they are stripped out during the conversion to HTML. The intention of reference-style links is to make your document significantly more readable — and, [as noted above](#what-is-markdown), readbility is a core objective of the Markdown syntax. Two common techniques to this end are to place them either immediately after the paragraph in which they are used, or to put them at the bottom of the document, like footnotes. An example of the former technique:
+
+~~~markdown
+In recent years it seems that [Google] [1] has dominated the search engine market
+in ways that neither [Yahoo] [2] nor [MSN] [3] have managed.
+
+  [1]: http://google.com/        "Google"
+  [2]: http://search.yahoo.com/  "Yahoo Search"
+  [3]: http://search.msn.com/    "MSN Search"
+~~~
+
+Which generates:
+
+~~~html
+<p>In recent years it seems that <a href="http://google.com/"title="Google">Google</a>
+has dominated the search engine market in ways that neither <a href="http://search.yahoo.com/"
+title="Yahoo Search">Yahoo</a> nor <a href="http://search.msn.com/"
+title="MSN Search">MSN</a> have managed.</p>
+~~~
+
+With Markdown’s reference-style links, a source document much more closely resembles the final output, as rendered in a browser. By allowing you to move the markup-related metadata out of the paragraph, you can add links without interrupting the narrative flow of your prose.
+
 
 
 ## More advanced syntax
