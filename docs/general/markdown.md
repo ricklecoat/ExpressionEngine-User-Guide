@@ -140,6 +140,17 @@ Becomes:
 <p>This is regular text with <code>a demonstration &lt;a href="#"&gt; tag</code> placed in the middle.</p>
 ~~~
 
+To include a literal backtick character within a code span, you can use double backticks as the opening and closing delimiters:
+~~~markdown
+``There is a literal backtick (`) here.``
+~~~
+
+Which will produce:
+
+~~~html
+<p><code>There is a literal backtick (`) here.</code></p>
+~~~
+
 ### Code blocks, indented
 
 Pre-formatted code blocks are used for writing about programming or markup source code. Rather than forming normal paragraphs, the lines of a code block are interpreted literally. As with inline code, ampersands and angle brackets will be turned into HTML entities. In addition, Markdown wraps a code block in both `<pre>` and `<code>` tags.
@@ -525,9 +536,45 @@ You can apply span-level formatting to the content of each cell using regular Ma
 
 [TOC=3]
 
-### Item 1
+### Emphasis
 
-xxxxxxxxx
+Asterisks (\*) and underscores (\_) are used to indicate emphasis. Text wrapped with a single \* or \_ will be wrapped with an HTML `<em>` tag; using double \*’s or double \_’s will wrap the text in a `<strong>` tag. So:
+~~~markdown
+*single asterisk*
+_single underscore_
+**double asterisks**
+__double underscore__
+~~~
+Generates:
+~~~html
+<em>single asterisk</em>
+<em>single underscore</em>
+<strong>double asterisks</strong>
+<strong>double underscore</strong>
+~~~
+You may use whichever style you prefer; the only restriction is that the same character must be used to open and close an emphasis span.
+
+You can use emphasis in the middle of a word, but in this situation you _must_ use asterisks — underscores will be treated literally. So:
+
+~~~markdown
+Abso*friggin*lutely
+Abso**friggin**lutely
+Abso_friggin_lutely
+Abso__friggin__lutely
+~~~
+Becomes:
+~~~html
+Abso<em>friggin</em>lutely
+Abso<strong>friggin</strong>lutely
+Abso_friggin_lutely
+Abso__friggin__lutely
+~~~
+
+When * or _ are surrounded with spaces they will always be treated as literal asterisks or underscores. If you wish to have either of these characters treated literally in a situation where they _cannot_ be surrounded by spaces, you can backslash-escape them like so:
+
+~~~
+\*Some text surrounded by literal asterisks\*
+~~~
 
 ### Item 2
 
