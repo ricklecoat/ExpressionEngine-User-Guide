@@ -660,7 +660,7 @@ Where “id” is the name of a defined image reference. Image references are de
 
 WARN: **Warning:** Although you can use single quotes to delineate the title attribute for inline-style images, for reference-style images double quotes must be used.
 
-Currently, Markdown has no syntax for specifying the dimensions of an image; if you need this then you can simply use regular HTML <img> tags.
+Currently, Markdown has no syntax for specifying the dimensions of an image; if you need this then you can simply use regular HTML `<img>` tags.
 
 
 
