@@ -27,7 +27,7 @@ For more information about the philosophy and concepts behind Markdown, visit th
 
 ### What Markdown is not
 
-Markdown is not intended as a replacement for HTML, but to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
+Markdown is not intended as a replacement for HTML, but rather to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
 
 ## Paragraphs, Headers, Blockquotes and Horizontal Rules
 
@@ -710,7 +710,35 @@ When * or _ are surrounded with spaces they will always be treated as literal as
 
 ### Abbreviations
 
-xxxxxxxxx
+Markdown supports abbreviations (`<abbr>`) using a syntax that follows the two-part ‘reference’ style used by links and images. An abbreviation is defined like so:
+
+~~~markdown
+*[HTML]: Hyper Text Markup Language
+*[W3C]:  World Wide Web Consortium
+~~~
+
+then, elsewhere in the document, write text such as:
+
+~~~markdown
+The HTML specification
+is maintained by the W3C.
+~~~
+
+and any instance of those words in the text will become:
+~~~html
+The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
+is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.
+~~~
+
+Abbreviations are case-sensitive, and will span on multiple words when defined as such. An abbreviation may also have an empty definition, in which case `<abbr>` tags will be added in the text but the title attribute will be omitted.
+
+~~~markdown
+Operation Tigra Genesis is going well.
+
+*[Tigra Genesis]:
+~~~
+
+Abbreviation definitions can be anywhere in the document. They are stripped from the final document, just like [link](#links-reference-style) and [image](#images-reference-style) definitions.
 
 
 
