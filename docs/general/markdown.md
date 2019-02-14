@@ -530,57 +530,13 @@ You can apply span-level formatting to the content of each cell using regular Ma
 | `destroy()`   | **Destroy your computer!**     |
 ~~~
 
-
-
-## Span elements
+## Links
 
 [TOC=3]
 
-### Emphasis
+Markdown allows links to be created in two different styles: _Inline_ and _Reference_. In both styles the link text is delineated by [square brackets].
 
-Asterisks (\*) and underscores (\_) are used to indicate emphasis. Text wrapped with a single \* or \_ will be wrapped with an HTML `<em>` tag; using double \*’s or double \_’s will wrap the text in a `<strong>` tag. So:
-~~~markdown
-*single asterisk*
-_single underscore_
-**double asterisks**
-__double underscore__
-~~~
-Generates:
-~~~html
-<em>single asterisk</em>
-<em>single underscore</em>
-<strong>double asterisks</strong>
-<strong>double underscore</strong>
-~~~
-You may use whichever style you prefer; the only restriction is that the same character must be used to open and close an emphasis span.
-
-You can use emphasis in the middle of a word, but in this situation you _must_ use asterisks — underscores will be treated literally. So:
-
-~~~markdown
-Abso*friggin*lutely
-Abso**friggin**lutely
-Abso_friggin_lutely
-Abso__friggin__lutely
-~~~
-Becomes:
-~~~html
-Abso<em>friggin</em>lutely
-Abso<strong>friggin</strong>lutely
-Abso_friggin_lutely
-Abso__friggin__lutely
-~~~
-
-When * or _ are surrounded with spaces they will always be treated as literal asterisks or underscores. If you wish to have either of these characters treated literally in a situation where they _cannot_ be surrounded by spaces, you can backslash-escape them like so:
-
-~~~
-\*Some text surrounded by literal asterisks\*
-~~~
-
-### Links, inline
-
-Markdown allows links to be created in two different styles: _Inline_ and _Reference_.
-
-In both styles the link text is delineated by [square brackets].
+### Links, inline-style
 
 To create an _Inline_ link, place regular parentheses immediately after the link text’s closing square bracket. Inside the parentheses, put the URL where you want the link to point, along with an optional title for the link, surrounded in quotes. For example:
 
@@ -596,7 +552,7 @@ Will produce:
 
 As with regular HTML, relative paths are permitted for local resources on the same server.
 
-### Links, reference
+### Links, reference-style
 
 _Reference-style_ links use a second pair of square brackets, inside of which you place a label of your own choosing to identify the link. The two squares of brackets may, optionally, be separated by a space if you wish.
 
@@ -667,6 +623,98 @@ title="MSN Search">MSN</a> have managed.</p>
 ~~~
 
 With Markdown’s reference-style links, a source document much more closely resembles the final output, as rendered in a browser. By allowing you to move the markup-related metadata out of the paragraph, you can add links without interrupting the narrative flow of your prose.
+
+## Images
+
+[TOC=3]
+
+Markdown uses an image syntax that closely resembles the syntax for links, allowing for two styles: _inline_ and _reference_.
+
+### Images, inline-style
+
+Inline image syntax looks like this:
+
+~~~markdown
+![Alt text](/path/to/img.jpg)
+![Alt text](/path/to/img.jpg "Optional title")
+~~~
+
+As you can see, it is very similar to the [inline link](#links-inline-style) syntax. The key features are:
+- An exclamation mark: !;
+- followed by a set of square brackets, containing the alt attribute text for the image;
+- followed by a set of parentheses, containing the URL or path to the image, and an optional title attribute enclosed in either double or single quotes.
+
+### Images, reference-style
+
+Reference-style image syntax looks like this:
+
+~~~markdown
+![Alt text][id]
+~~~
+
+Where “id” is the name of a defined image reference. Image references are defined using syntax identical to link references:
+
+~~~markdown
+[id]: url/to/image  "Optional title attribute"
+~~~
+
+WARN: **Warning:** Although you can use single quotes to delineate the title attribute for inline-style images, for reference-style images double quotes must be used.
+
+Currently, Markdown has no syntax for specifying the dimensions of an image; if you need this then you can simply use regular HTML <img> tags.
+
+
+
+## Other inline elements
+
+[TOC=3]
+
+### Emphasis
+
+Asterisks (\*) and underscores (\_) are used to indicate emphasis. Text wrapped with a single \* or \_ will be wrapped with an HTML `<em>` tag; using double \*’s or double \_’s will wrap the text in a `<strong>` tag. So:
+~~~markdown
+*single asterisk*
+_single underscore_
+**double asterisks**
+__double underscore__
+~~~
+Generates:
+~~~html
+<em>single asterisk</em>
+<em>single underscore</em>
+<strong>double asterisks</strong>
+<strong>double underscore</strong>
+~~~
+You may use whichever style you prefer; the only restriction is that the same character must be used to open and close an emphasis span.
+
+You can use emphasis in the middle of a word, but in this situation you _must_ use asterisks — underscores will be treated literally. So:
+
+~~~markdown
+Abso*friggin*lutely
+Abso**friggin**lutely
+Abso_friggin_lutely
+Abso__friggin__lutely
+~~~
+Becomes:
+~~~html
+Abso<em>friggin</em>lutely
+Abso<strong>friggin</strong>lutely
+Abso_friggin_lutely
+Abso__friggin__lutely
+~~~
+
+When * or _ are surrounded with spaces they will always be treated as literal asterisks or underscores. If you wish to have either of these characters treated literally in a situation where they _cannot_ be surrounded by spaces, you can backslash-escape them like so:
+
+~~~
+\*Some text surrounded by literal asterisks\*
+~~~
+
+### Abbreviations
+
+xxxxxxxxx
+
+
+
+
 
 
 
