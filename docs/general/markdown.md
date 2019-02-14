@@ -29,7 +29,7 @@ For more information about the philosophy and concepts behind Markdown, visit th
 
 Markdown is not intended as a replacement for HTML, but to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
 
-## Paragraphs, Headers and Blockquotes
+## Paragraphs, Headers, Blockquotes and Horizontal Rules
 
 [TOC=3]
 
@@ -112,6 +112,18 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 >
 >     return shell_exec("echo $input | $markdown_script");
 ```
+
+### Horizontal rules
+
+Three or more hyphens, asterisks, or underscores, when placed on a line on their own, will generate a horizontal rule (`<hr />`). Spaces between the hyphens or asterisks are permitted. Each of the following lines will produce a horizontal rule:
+
+~~~
+* * *
+***
+**********
+- - -
+__________
+~~~
 
 ## Code
 
@@ -561,5 +573,7 @@ xxxxxxxxx
 xxxxxxxxxx
 
 ## Extras
+
+Markdown generates HTML that will be compatible with both an XHTML and HTML doctype — in other words, element tags such as `<image />`, `<br />`, & `<hr />` will be created with a self-closing forward slash at the end, and closing tags _will_ be created for elements where a closing tag is theoretically optional.
 
 John Gruber has made a [Markdown web dingus](https://daringfireball.net/projects/markdown/dingus) available at Daring Fireball that you can use to try out Markdown and practice getting to grips with the syntax.
