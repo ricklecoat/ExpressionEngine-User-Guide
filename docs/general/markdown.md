@@ -713,39 +713,8 @@ When * or _ are surrounded with spaces they will always be treated as literal as
 \*Some text surrounded by literal asterisks\*
 ~~~
 
-## Abbreviations
 
-Markdown supports abbreviations (`<abbr>`) using a syntax somewhat similar to the two-part ‘reference’ technique used by links and images. You define abbreviations like so:
-
-~~~markdown
-*[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
-~~~
-
-Then, wherever those specified abbreviations appear in your document, they will be processed accordingly. So:
-
-~~~markdown
-The HTML specification
-is maintained by the W3C.
-~~~
-
-Becomes:
-
-~~~html
-The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
-is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.
-~~~
-
-Abbreviations **are** case-sensitive, and will span on multiple words when defined as such. An abbreviation may also have an empty definition, in which case `<abbr>` tags will be added in the text but the title attribute will be omitted.
-
-~~~markdown
-Operation Tigra Genesis is going well.
-
-*[Tigra Genesis]:
-~~~
-
-Abbreviation definitions can be placed anywhere in your document. They are stripped from the final output, just like [link](#links-reference-style) and [image](#images-reference-style) definitions.
-
+## Footnotes
 
 
 
@@ -795,3 +764,36 @@ xxxxxxxxxx
 Markdown generates HTML that will be compatible with both an XHTML and HTML doctype — in other words, element tags such as `<image />`, `<br />`, & `<hr />` will be created with a self-closing forward slash at the end, and closing tags _will_ be created for elements where a closing tag is theoretically optional.
 
 John Gruber has made a [Markdown web dingus](https://daringfireball.net/projects/markdown/dingus) available at Daring Fireball that you can use to try out Markdown and practice getting to grips with the syntax.
+
+## Abbreviations
+
+Markdown supports abbreviations (`<abbr>`) using a syntax somewhat similar to the two-part ‘reference’ technique used by links and images. You define abbreviations like so:
+
+~~~markdown
+*[HTML]: Hyper Text Markup Language
+*[W3C]:  World Wide Web Consortium
+~~~
+
+Then, wherever those specified abbreviations appear in your document, they will be processed accordingly. So:
+
+~~~markdown
+The HTML specification
+is maintained by the W3C.
+~~~
+
+Becomes:
+
+~~~html
+The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
+is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.
+~~~
+
+Abbreviations **are** case-sensitive, and will span on multiple words when defined as such. An abbreviation may also have an empty definition, in which case `<abbr>` tags will be added in the text but the title attribute will be omitted.
+
+~~~markdown
+Operation Tigra Genesis is going well.
+
+*[Tigra Genesis]:
+~~~
+
+Abbreviation definitions can be placed anywhere in your document. They are stripped from the final output, just like [link](#links-reference-style) and [image](#images-reference-style) definitions.
