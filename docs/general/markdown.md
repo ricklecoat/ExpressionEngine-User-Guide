@@ -29,17 +29,13 @@ For more information about the philosophy and concepts behind Markdown, visit th
 
 Markdown is not intended as a replacement for HTML, but rather to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
 
-## Paragraphs, Headers, Blockquotes and Horizontal Rules
-
-[TOC=3]
-
-### Paragraphs
+## Paragraphs and line breaks
 
 A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line; a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.
 
 To insert a simple `<br>` line break rather than start a new paragraph, simply finish your text with two spaces, followed by a _single_ carriage return.
 
-### Headers
+## Headers
 
 To create a Header of the type H1-H6 simply put 1-6 hash marks (`#`) at the beginning of the line. The number of hashes equals the resulting HTML header level.
 
@@ -60,7 +56,7 @@ This is an H2
 
 Any number of the underlining characters (`=` or `-`) will work.
 
-### Blockquotes
+## Blockquotes
 
 Blockquotes are indicated using email-style angle brackets (`>`). It is generally more readable to hard wrap the text and put a `>` before every line, but it’s also permissible to simply put the `>` before just the first line of a hard-wrapped paragraph. Either of the following two code blocks:
 
@@ -113,7 +109,7 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 >     return shell_exec("echo $input | $markdown_script");
 ```
 
-### Horizontal rules
+## Horizontal rules
 
 Three or more hyphens, asterisks, or underscores, when placed on a line on their own, will generate a horizontal rule (`<hr />`). Spaces between the hyphens or asterisks are permitted. Each of the following lines will produce a horizontal rule:
 
