@@ -772,6 +772,7 @@ appear in the text out of numerical order.[^1]
 
 [^1]: This footnote uses '1' as its marker text.
 [^2]: This footnote uses '2' as its marker text.
+
 ~~~
 
 Once converted it might, at first glance, appear to have erroneously swapped the footnotes around. What is presented to the reader in the web browser is the following:
@@ -798,6 +799,7 @@ Additionally, if you want things to align more neatly, you can leave the first l
 
     The languages only differ in their grammar, their pronunciation
     and their most common words.
+
 ~~~
 ~~~markdown
 [^1]: The European languages are members of the same family. Their
@@ -806,6 +808,7 @@ Europe uses the same vocabulary.
 
     The languages only differ in their grammar, their pronunciation
 and their most common words.
+
 ~~~
 ~~~markdown
 [^1]:
@@ -815,6 +818,7 @@ and their most common words.
 
     The languages only differ in their grammar, their pronunciation
     and their most common words.
+
 ~~~
 
 This following footnote definition will generate a footnote containing an unordered list:
@@ -826,6 +830,7 @@ This following footnote definition will generate a footnote containing an unorde
     - Here’s a reason
     - Here’s another reason
 	- I'm all out of reasons.
+
 ~~~
 
 And this one generates a footnote containing a blockquote, which in turn contains 2 paragraphs.:
@@ -838,41 +843,51 @@ separate existence is a myth. As Freud never said:
 pronunciation and their most common words.
 
     > But they’re all lovely.
+
 ~~~
 
 
 
-
-
-## More advanced syntax
-
-[TOC=3]
-
-### Inline html
+## Inline html
 
 For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
 
-The only restrictions are that block-level HTML elements — e.g. `<div>`, `<table>`, `<pre>`, `<p>`, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags.
+Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block (a paragraph, list item, header, table, blockquote, code block, etc). You can use regular HTML tags instead of Markdown formatting if you are so inclined.
 
-For example, to add an HTML table to a Markdown article:
+There are certain restrictions regarding *block* elements in Markdown:
+
+1. The opening tag of a block element must not be indented by more than three spaces. Any tag indented more than that will be treated as a code block according to standard Markdown rules.
+2. When the block element is inside a list item, all its content should be indented with the same amount of space as the list item is indented. (More indentation won’t do any harm as long as the first opening tag is not indented too much, becoming a code block — see first rule.)
+
+<!--
+The only restrictions are that block-level HTML elements — e.g. `<div>`, `<table>`, `<pre>`, `<p>`, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. -->
+
+For example, to add a `figure` element to a Markdown article:
 
 ```html
 This is a regular paragraph.
 
-<table>
-    <tr>
-        <td>Foo</td>
-    </tr>
-</table>
+<figure>
+    <img src="/imgs/pink_elephant.jpg" alt="a pink elephant">
+    <figcaption>Fig.1 - Sighted in Nowhereland</figcaption>
+</figure>
 
 This is another regular paragraph.
 ```
+
+## Markdown inside HTML
 
 NOTE: **Note:** Markdown formatting syntax is not processed within block-level HTML tags. E.g., you can't use Markdown-style `*emphasis*` inside an HTML block.
 
 Span-level HTML tags — e.g. `<span>`, `<cite>`, or `<del>` — can be used anywhere in a Markdown paragraph, list item, or header. If you want, you can even use HTML tags instead of Markdown formatting; e.g. if you’d prefer to use HTML `<a>` or `<img>` tags instead of Markdown’s link or image syntax, go right ahead.
 
 TIP: **Tip:** Unlike block-level HTML tags, Markdown syntax **is** processed within span-level tags.
+
+
+
+## More advanced syntax
+
+[TOC=3]
 
 ### Auto-escaping for special characters
 
