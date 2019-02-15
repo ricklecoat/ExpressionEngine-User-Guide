@@ -716,6 +716,129 @@ When * or _ are surrounded with spaces they will always be treated as literal as
 
 ## Footnotes
 
+[TOC=3]
+
+### Creating footnotes
+
+Footnotes a created in a way similar to reference-style links. A footnote consists, firstly, of a marker in the text that will be turned into a linked superscript number. The second part is a footnote definition that can be placed anywhere in the document and which, once processed, will be added to an ordered list of footnotes at the end of the document.
+
+NOTE: **Note:** In this respect footnotes differ from abbreviations, and reference-style links and images, because footnote definitions are **not** removed from the document during processing (though they may be relocated if not already at the end of the document).
+
+Example:
+
+~~~markdown
+This is some text with a footnote.[^1]
+
+[^1]: And this is the footnote itself.
+~~~
+
+Generates:
+
+~~~html
+<p>This is some text with a footnote.
+	<sup id="fnref:1">
+		<a href="#fn:1" class="footnote-ref">2</a>
+	</sup>
+</p>
+<div class="footnotes">
+	<hr />
+	<ol>
+		<li id="fn:1">
+			<p>And this is the footnote itself&#160;
+				<a href="#fnref:1" class="footnote-backref">&#8617;&#xFE0E;</a>
+			</p>
+		</li>
+	</ol>
+</div>
+~~~
+
+This looks a little cryptic, but what the browser will display to the end user is this:
+
+> This is some text with a footnote.<sup><a href="#fnote1b" id="fnote1a">1</a></sup>
+> ***
+> 1. And this is the footnote itself. <a href="#fnote1a" id="fnote1b">↩︎</a>
+
+### ID names and footnote ordering
+
+Each footnote must have a distinct name. Names can contain any character valid within an `id` attribute in HTML, and that name will be used _solely_ to allow Markdown to link footnote references to footnote definitions. However, it is important to realise that it has **no** effect on the final numbering of the footnotes.
+
+NOTE: **Note:** Footnotes will always be listed in the order they are linked to in the text.
+
+This can seem confusing if you use numbers as your marker IDs and then place those markers in the text out of numerical order. For example, consider this block of Markdown:
+
+~~~markdown
+This text has two footnotes[^2], but the linking markers
+appear in the text out of numerical order.[^1]
+
+[^1]: This footnote uses '1' as its marker text.
+[^2]: This footnote uses '2' as its marker text.
+~~~
+
+Once converted it might, at first glance, appear to have erroneously swapped the footnotes around. What is presented to the reader in the web browser is the following:
+
+> This text has two footnotes<sup><a href="#fnote2b" id="fnote2a">1</a></sup>, but the linking markers appear in the text out of numerical order.<sup><a href="#fnote3b" id="fnote3a">2</a></sup>
+> ****
+> 1. This footnote uses “2” as its marker text. <a href="#fnote2a" id="fnote2b">↩︎</a>
+> 2. This footnote uses “1” as its marker text. <a href="#fnote3a" id="fnote3b">↩︎</a>
+
+In fact nothing has gone wrong; Markdown has simply placed the footnotes in the same order as they appear in the text; the fact that they originally used different numbers for their marker IDs is irrelevant.
+
+WARN: **Warning:** You cannot make two links to the same footnotes; if you try to, the second footnote reference will be left as plain text. Similarly, footnote references that are not linked to a valid footnote definition (and vice versa) will remain as plain text.
+
+### Block-level content in footnotes
+
+Just as you can with [list items](#paragraphs-in-list-items), you can include block-level elements in footnotes and it works in much the same way. To include multiple paragraphs in a footnote, simply indent each paragraph after the first by 4 spaces (or 1 tab). As with list items, you can be lazy about this and only indent the first line of the paragraph is you wish.
+
+Additionally, if you want things to align more neatly, you can leave the first line of the footnote empty and put your first paragraph on the line below (indented by the same 4 spaces or 1 tab). All of the following footnote definitions are equivalent and generate the same HTML:
+
+~~~markdown
+[^1]: The European languages are members of the same family. Their
+    separate existence is a myth. For science, music, sport, etc,
+    Europe uses the same vocabulary.
+
+    The languages only differ in their grammar, their pronunciation
+    and their most common words.
+~~~
+~~~markdown
+[^1]: The European languages are members of the same family. Their
+separate existence is a myth. For science, music, sport, etc,
+Europe uses the same vocabulary.
+
+    The languages only differ in their grammar, their pronunciation
+and their most common words.
+~~~
+~~~markdown
+[^1]:
+    The European languages are members of the same family. Their
+    separate existence is a myth. For science, music, sport, etc,
+    Europe uses the same vocabulary.
+
+    The languages only differ in their grammar, their pronunciation
+    and their most common words.
+~~~
+
+This following footnote definition will generate a footnote containing an unordered list:
+
+~~~markdown
+[^1]: The European languages are members of the same family. Their
+    separate existence is a myth.
+
+    - Here’s a reason
+    - Here’s another reason
+	- I'm all out of reasons.
+~~~
+
+And this one generates a footnote containing a blockquote, which in turn contains 2 paragraphs.:
+
+~~~markdown
+[^1]: The European languages are members of the same family. Their
+separate existence is a myth. As Freud never said:
+
+    > The languages only differ in their grammar, their
+pronunciation and their most common words.
+
+    > But they’re all lovely.
+~~~
 
 
 
