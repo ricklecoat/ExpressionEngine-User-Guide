@@ -37,14 +37,14 @@ To insert a simple `<br>` line break rather than start a new paragraph, simply f
 
 ## Headers
 
-To create a Header of the type H1-H6 simply put 1-6 hash marks (`#`) at the beginning of the line. The number of hashes equals the resulting HTML header level.
+To create a Header of the type H1-H6 simply put 1-6 hash marks (#) at the beginning of the line. The number of hashes equals the resulting HTML header level.
 
 	# This is an H1
 	## This is an H2
 	### This is an H3
 	(etc)
 
-Additionally, `<h1>` and `<h2>` Headers can optionally be created by “underlining” with equal signs (`=`) and hyphens (`-`), respectively.
+Additionally, `<h1>` and `<h2>` Headers can optionally be created by “underlining” with equal signs (=) and hyphens (-), respectively.
 
 ```markdown
 This is an H1
@@ -54,51 +54,51 @@ This is an H2
 -------------
 ```
 
-Any number of the underlining characters (`=` or `-`) will work.
+Any number of the underlining characters (= or -) will work.
 
 ## Blockquotes
 
-Blockquotes are indicated using email-style angle brackets (`>`). It is generally more readable to hard wrap the text and put a `>` before every line, but it’s also permissible to simply put the `>` before just the first line of a hard-wrapped paragraph. Either of the following two code blocks:
+Blockquotes are indicated using email-style angle brackets (>). It is generally more readable to hard wrap the text and put a > before every line, but it’s also permissible to simply put the `>` before just the first line of a hard-wrapped paragraph. Either of the following two code blocks:
 
-```markdown
+~~~markdown
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 > Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 >
 > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 > id sem consectetuer libero luctus adipiscing.
-```
-```markdown
+~~~
+~~~markdown
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
 Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 
 > Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
 id sem consectetuer libero luctus adipiscing.
-```
+~~~
 
 …will generate the following HTML:
 
-```html
+~~~html
 <blockquote>
 	<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
 	<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.</p>
 </blockquote>
-```
+~~~
 
 Blockquotes can be nested within each other simply by adding additional levels of angled brackets:
 
-```markdown
+~~~markdown
 > This is the first level of quoting.
 >
 > > This is nested blockquote.
 >
 > Back to the first level.
-```
+~~~
 
 Additionally, Blockquotes can contain other Markdown elements, such as Headers, lists, code blocks, etc.
 
-```markdown
+~~~markdown
 > ## This is a header.
 >
 > 1.   This is the first list item.
@@ -107,7 +107,7 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 > Here's some example code:
 >
 >     return shell_exec("echo $input | $markdown_script");
-```
+~~~
 
 ## Horizontal rules
 
@@ -127,10 +127,10 @@ __________
 
 ### Inline code
 
-A span of inline text can be marked as code by surrounding it with ‘backtick’ quotes. The span will be wrapped in `<code>…</code>` tags and any ampersands (&) and angle brackets (< or >) will automatically be translated into HTML entities. This makes it easy to use Markdown to write about HTML example code. So:
-```markdown
+A span of inline text can be marked as code by surrounding it with ‘backtick’ quotes. The span will be wrapped in `<code>...</code>` tags and any ampersands (&) and angle brackets (< or >) will automatically be translated into HTML entities. This makes it easy to use Markdown to write about HTML example code. So:
+~~~markdown
 This is regular text with `a demonstration <a href="#"> tag` placed in the middle.
-```
+~~~
 Becomes:
 ~~~html
 <p>This is regular text with <code>a demonstration &lt;a href="#"&gt; tag</code> placed in the middle.</p>
@@ -187,7 +187,7 @@ This is also a one-line code block
 ```
 ~~~
 
-Fenced code blocks have some advantages over their indented counterparts. They are ideal if you need to paste some code into an editor that lacks a convenient command to indent multiple lines at once, like a text box in a web browser — eg. an entry field in the ExpressionEngine control panel.
+Fenced code blocks have some advantages over their indented counterparts. They are ideal if you need to paste some code into an editor, like a text box in a web browser, that lacks a convenient command to indent multiple lines at once — eg. an entry field in the ExpressionEngine control panel.
 
 Also, they can be used immediately following a list, whereas indented code blocks cannot (because Markdown would view the indent as signifying a paragraph in the list — see [Paragraphs in list items](#paragraphs-in-list-items)). Like so:
 
@@ -213,7 +213,7 @@ Lastly, fenced code blocks allow you to specify a class name that will apply to 
 ~~~
 ```
 
-You can also use a [special attribute block](#special-attributes):
+You can expand the above trick to include certain additional attributes by using a [special attribute block](#special-attributes):
 
 ```
 ~~~ {.html #example-1}
@@ -283,7 +283,7 @@ Ordered lists, naturally enough, use numbers followed by periods. Note, however,
 
 NOTE: **Note:** If an ordered list starts with a number _other_ than 1, Markdown will honor that in the HTML output. So an unordered list in Markdown that starts with `5. Car` will output an opening tag of `<ol start="5">`. This allows you to continue a list after (for example) an intervening paragraph of text.
 
-TIP: **Tip:** You may have a regular paragraph that just happens to start with a number-period-space sequence. If so, you can avoid accidentally triggering an ordered list by escaping the period with a backslash, eg. `40\. What a great Age!`
+TIP: **Tip:** You may have a regular paragraph that just so happens to start with a number-period-space sequence. In this situation you can avoid accidentally triggering an ordered list by escaping the period with a backslash, eg. `40\. What a great Age!`
 
 ### Definition lists
 
@@ -321,7 +321,7 @@ Apple
 Orange
 :   The fruit of an evergreen tree of the genus Citrus.
 ```
-And definitions with more than one term:
+You can also have definitions with more than one term:
 ```markdown
 Term 1
 Term 2
@@ -458,7 +458,7 @@ Lists can be nested, placing a new list inside a list item. To do so, simply ind
 </ul>
 ```
 
-WARN: **Warning:** Do not double-indent in this way (8 spaces or two tabs) or else you will trigger a [code block](#code-blocks-in-list-items).
+WARN: **Warning:** Do not double-indent in this way (ie. using 8 spaces or two tabs), else you will trigger a [code block](#code-blocks-in-list-items).
 
 ## Tables
 
@@ -532,9 +532,9 @@ You can apply span-level formatting to the content of each cell using regular Ma
 
 Markdown allows links to be created in two different styles: _Inline_ and _Reference_. In both styles the link text is delineated by [square brackets].
 
-### Links, inline-style
+### Links, inline style
 
-To create an _Inline_ link, place regular parentheses immediately after the link text’s closing square bracket. Inside the parentheses, put the URL where you want the link to point, along with an optional title for the link, surrounded in quotes. For example:
+To create an Inline link, place regular parentheses immediately after the link text’s closing square bracket. Inside the parentheses, put the URL where you want the link to point, along with an optional title for the link, surrounded in quotes. For example:
 
 ~~~markdown
 This is [an example](http://example.com/ "Title") inline link.
@@ -548,9 +548,9 @@ Will produce:
 
 As with regular HTML, relative paths are permitted for local resources on the same server.
 
-### Links, reference-style
+### Links, reference style
 
-_Reference-style_ links use a second pair of square brackets, inside of which you place a label of your own choosing to identify the link. The two squares of brackets may, optionally, be separated by a space if you wish.
+Reference-style links use a second pair of square brackets, inside of which you place a label of your own choosing to identify the link. The two squares of brackets may, optionally, be separated by a space if you wish.
 
 ~~~markdown
 This is [an example][id] reference-style link.
@@ -564,9 +564,9 @@ Then you define the link itself like so:
 
 The link definition(s) can be placed anywhere you like in your document. They are only used for creating links during Markdown processing, and are stripped from your document in the HTML output.
 
-The URL portion of the link definition may, optionally, be surrounded by angle brackets and the title part can be enclosed in double quotes or standard parentheses. Additionally, you can put the title attribute on the next line and use extra spaces or tabs for padding — which tends to look better with longer URLs.
+The URL portion of the link definition may, optionally, be surrounded by angle brackets. The ‘title’ part, if included, should be enclosed in either double quotes or standard parentheses. Additionally, you can put the title attribute on the next line and use extra spaces or tabs for padding — which tends to look better with longer URLs.
 
-The following four link definitions, therefore, are equivalent:
+The following four link definitions are, therefore, equivalent:
 ~~~markdown
 [foo]: http://example.com "Optional title for the link"
 [foo]: http://example.com (Optional title for the link)
@@ -602,7 +602,7 @@ As previously noted, link definitions can be placed anywhere in your document, a
 
 ~~~markdown
 In recent years it seems that [Google] [1] has dominated the search engine market
-in ways that neither [Yahoo] [2] nor [MSN] [3] have managed.
+in ways that neither [Yahoo] [2] nor [MSN] [3] have quite managed.
 
   [1]: http://google.com/        "Google"
   [2]: http://search.yahoo.com/  "Yahoo Search"
@@ -615,7 +615,7 @@ Which generates:
 <p>In recent years it seems that <a href="http://google.com/"title="Google">Google</a>
 has dominated the search engine market in ways that neither <a href="http://search.yahoo.com/"
 title="Yahoo Search">Yahoo</a> nor <a href="http://search.msn.com/"
-title="MSN Search">MSN</a> have managed.</p>
+title="MSN Search">MSN</a> have quite managed.</p>
 ~~~
 
 With Markdown’s reference-style links, a source document much more closely resembles the final output, as rendered in a browser. By allowing you to move the markup-related metadata out of the paragraph, you can add links without interrupting the narrative flow of your prose.
@@ -624,9 +624,9 @@ With Markdown’s reference-style links, a source document much more closely res
 
 [TOC=3]
 
-Markdown uses an image syntax that closely resembles the syntax for links, allowing for two styles: _inline_ and _reference_.
+Markdown uses an image syntax that closely resembles the syntax for links, allowing for two different styles: _inline_ and _reference_.
 
-### Images, inline-style
+### Images, inline style
 
 Inline image syntax looks like this:
 
@@ -635,12 +635,9 @@ Inline image syntax looks like this:
 ![Alt text](/path/to/img.jpg "Optional title")
 ~~~
 
-As you can see, it is very similar to the [inline link](#links-inline-style) syntax. The key features are:
-- An exclamation mark: !;
-- followed by a set of square brackets, containing the alt attribute text for the image;
-- followed by a set of parentheses, containing the URL or path to the image, and an optional title attribute enclosed in either double or single quotes.
+As you can see, this is very similar to the [inline link](#links-inline-style) syntax.
 
-### Images, reference-style
+### Images, reference style
 
 Reference-style image syntax looks like this:
 
@@ -654,17 +651,29 @@ Where “id” is the name of a defined image reference. Image references are de
 [id]: url/to/image  "Optional title attribute"
 ~~~
 
-WARN: **Warning:** Although you can use single quotes to delineate the title attribute for inline-style images, for reference-style images double quotes must be used.
+The ‘path’ portion of the image reference may, optionally, be surrounded by angle brackets. The ‘title’ part, if included, should be enclosed in either double quotes or standard parentheses. Additionally, you can put the title attribute on the next line and use extra spaces or tabs for padding — which tends to look better with longer paths.
+
+The following four image references are, therefore, equivalent:
+
+~~~markdown
+[foo]: path/to/image.jpg "Optional title for the link"
+[foo]: path/to/image.jpg (Optional title for the link)
+[foo]: <path/to/image.jpg> "Optional title for the link"
+[foo]: very/long/server/path/to/a/deeply/buried/image.jpg
+       (Optional title for the link)
+~~~
+
+Image reference names may consist of letters, numbers, spaces, and punctuation. They are not case sensitive.
+
+TIP: **Tip:** Although you can use single quotes to delineate the title attribute for _inline-style_ images, for _reference-style_ images double quotes must be used. To avoid having to remember this distinction, it may be simplest to just stick to using double quotes.
+
+Just as with [link](#links-reference-style) and [abbreviation](#abbreviations) definitions, image definitions can be placed anywhere in your document. They are stripped out during processing, and will not appear in the final output.
 
 Currently, Markdown has no syntax for specifying the dimensions of an image; if you need this then you can simply use regular HTML `<img>` tags.
 
 
 
-## Other inline elements
-
-[TOC=3]
-
-### Emphasis
+## Emphasis
 
 Asterisks (\*) and underscores (\_) are used to indicate emphasis. Text wrapped with a single \* or \_ will be wrapped with an HTML `<em>` tag; using double \*’s or double \_’s will wrap the text in a `<strong>` tag. So:
 ~~~markdown
@@ -704,29 +713,30 @@ When * or _ are surrounded with spaces they will always be treated as literal as
 \*Some text surrounded by literal asterisks\*
 ~~~
 
-### Abbreviations
+## Abbreviations
 
-Markdown supports abbreviations (`<abbr>`) using a syntax that follows the two-part ‘reference’ style used by links and images. An abbreviation is defined like so:
+Markdown supports abbreviations (`<abbr>`) using a syntax somewhat similar to the two-part ‘reference’ technique used by links and images. You define abbreviations like so:
 
 ~~~markdown
 *[HTML]: Hyper Text Markup Language
 *[W3C]:  World Wide Web Consortium
 ~~~
 
-then, elsewhere in the document, write text such as:
+Then, wherever those specified abbreviations appear in your document, they will be processed accordingly. So:
 
 ~~~markdown
 The HTML specification
 is maintained by the W3C.
 ~~~
 
-and any instance of those words in the text will become:
+Becomes:
+
 ~~~html
 The <abbr title="Hyper Text Markup Language">HTML</abbr> specification
 is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.
 ~~~
 
-Abbreviations are case-sensitive, and will span on multiple words when defined as such. An abbreviation may also have an empty definition, in which case `<abbr>` tags will be added in the text but the title attribute will be omitted.
+Abbreviations **are** case-sensitive, and will span on multiple words when defined as such. An abbreviation may also have an empty definition, in which case `<abbr>` tags will be added in the text but the title attribute will be omitted.
 
 ~~~markdown
 Operation Tigra Genesis is going well.
@@ -734,7 +744,7 @@ Operation Tigra Genesis is going well.
 *[Tigra Genesis]:
 ~~~
 
-Abbreviation definitions can be anywhere in the document. They are stripped from the final document, just like [link](#links-reference-style) and [image](#images-reference-style) definitions.
+Abbreviation definitions can be placed anywhere in your document. They are stripped from the final output, just like [link](#links-reference-style) and [image](#images-reference-style) definitions.
 
 
 
