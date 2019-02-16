@@ -990,6 +990,22 @@ Special attribute blocks can be applied to:
 - links
 - images
 
+For image and links, put the special attribute block immediately after the parenthesis containing the address:
+
+~~~markdown
+[link](url){#id .class}  
+![img](url){#id .class}
+~~~
+
+Or if using reference-style links and images, put it at the end of the definition line like this:
+
+~~~markdown
+[link][linkref] 
+![img][linkref]
+
+[linkref]: url "optional title" {#id .class}
+~~~
+
 ## Extras
 
 Markdown generates HTML that will be compatible with both an XHTML and HTML doctype — in other words, element tags such as `<image />`, `<br />`, & `<hr />` will be created with a self-closing forward slash at the end, and closing tags _will_ be created for elements where a closing tag is theoretically optional.
