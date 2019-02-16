@@ -864,7 +864,7 @@ The only restrictions are that block-level HTML elements — e.g. `<div>`, `<tab
 
 For example, to add a `figure` element to a Markdown article:
 
-```html
+~~~html
 This is a regular paragraph.
 
 <figure>
@@ -873,11 +873,37 @@ This is a regular paragraph.
 </figure>
 
 This is another regular paragraph.
-```
+~~~
+
+Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. Furthermore, if you try and insert block level HTML inside a paragraph, Markdown will split the paragraph appropriately. For example:
+
+~~~html
+This Markdown paragraph has some <span>span-level
+	(inline) html</span> in the middle.
+~~~
+Gives:
+~~~html
+<p>This Markdown paragraph has some <span>span-level
+	(inline) html</span> in the middle.</p>
+~~~
+
+Whereas:
+
+~~~html
+This Markdown paragraph has a <div>block-level element</div> in
+the middle. That's not allowed in HTML!
+~~~
+Gives:
+~~~html
+<p>This Markdown paragraph has a</p>
+<div>block-level element</div>
+<p>in the middle. That’s not allowed in HTML!</p>
+~~~
+
 
 ## Markdown inside HTML
 
-xxxxxxxxx
+Markdown syntax inside _span-level_ HTML elements is processed as normal
 
 
 
