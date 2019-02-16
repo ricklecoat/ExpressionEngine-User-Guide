@@ -852,7 +852,7 @@ pronunciation and their most common words.
 
 For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
 
-Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block (a paragraph, list item, header, table, blockquote, code block, etc). You can use regular HTML tags instead of Markdown formatting if you are so inclined.
+Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block (a paragraph, list item, header, table, blockquote, code block, etc). You can even use regular HTML tags instead of Markdown formatting, if you are so inclined.
 
 There are certain restrictions regarding *block* elements in Markdown:
 
@@ -877,11 +877,7 @@ This is another regular paragraph.
 
 ## Markdown inside HTML
 
-NOTE: **Note:** Markdown formatting syntax is not processed within block-level HTML tags. E.g., you can't use Markdown-style `*emphasis*` inside an HTML block.
-
-Span-level HTML tags — e.g. `<span>`, `<cite>`, or `<del>` — can be used anywhere in a Markdown paragraph, list item, or header. If you want, you can even use HTML tags instead of Markdown formatting; e.g. if you’d prefer to use HTML `<a>` or `<img>` tags instead of Markdown’s link or image syntax, go right ahead.
-
-TIP: **Tip:** Unlike block-level HTML tags, Markdown syntax **is** processed within span-level tags.
+xxxxxxxxx
 
 
 
