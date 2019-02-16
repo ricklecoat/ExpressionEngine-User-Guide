@@ -875,25 +875,29 @@ This is a regular paragraph.
 This is another regular paragraph.
 ~~~
 
-Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. Furthermore, if you try and insert block level HTML inside a paragraph, Markdown will split the paragraph appropriately. For example:
+Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. Furthermore, if you try and insert block-level HTML inside a paragraph, Markdown will split the paragraph appropriately. For example, this text:
 
 ~~~html
 This Markdown paragraph has some <span>span-level
 	(inline) html</span> in the middle.
 ~~~
+
 Gives:
+
 ~~~html
 <p>This Markdown paragraph has some <span>span-level
 	(inline) html</span> in the middle.</p>
 ~~~
 
-Whereas:
+However, if we try to force a `<div>` into a Markdown paragraph:
 
 ~~~html
 This Markdown paragraph has a <div>block-level element</div> in
 the middle. That's not allowed in HTML!
 ~~~
-Gives:
+
+We end up with:
+
 ~~~html
 <p>This Markdown paragraph has a</p>
 <div>block-level element</div>
@@ -903,7 +907,43 @@ Gives:
 
 ## Markdown inside HTML
 
-Markdown syntax inside _span-level_ HTML elements is processed as normal
+Markdown syntax inside _span-level_ HTML elements is processed as normal.
+
+In order for Markdown syntax to be processed inside *block-level* HTML elements, you can add the attribute  `markdown="1"` to the HTML element in question. This attribute will be stripped from the generated output, but will permit Markdown syntax to be correctly processed inside that HTML element. Note that the effects of the attribute are not passed onward to other, nested HTML elements. So if your Markdown document contains:
+
+~~~html
+<div>
+	This text has some **heavy** emphasis.
+</div>
+~~~
+Then the asterisks will be treated literally and the generated output will be entirely unchanghed. Whereas:
+~~~html
+<div markdown="1">
+	This text has some **heavy** emphasis.
+</div>
+~~~
+
+Will be turned into:
+
+~~~html
+<div>
+    This text has some <strong>heavy</strong> emphasis.
+</div>
+~~~
+
+Markdown will apply the correct formatting intelligently according to the block element you put the markdown attribute on. If you apply the markdown attribute to a `<p>` tag for instance, it will only produce span-level elements inside — it won’t allow things such as lists, blockquotes, code blocks.
+
+However, in some circumstances this can be ambiguous, such as:
+
+~~~html
+<table>
+	<tr>
+		<td markdown="1">This is *true* markdown text.</td>
+	</tr>
+</table>
+~~~
+
+A table cell can contain both span and block elements. In cases like this one, Markdown will only apply span-level rules. If you wish to enable block constructs, simply write `markdown="block"` instead.
 
 
 
