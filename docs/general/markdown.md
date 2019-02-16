@@ -957,7 +957,38 @@ xxxxxxxxx
 
 ### Special attributes
 
-xxxxxxxxxx
+You can set the id and class attribute on certain elements using a special attribute block. The desired attributes are placed inside curly brackets at the end of the line, with multiple attributes being separated by spaces. (An id is denoted using a hash (#) and a class is indicated by using a dot (.), just like in <abbr title="cascading style sheets">CSS</abbr>). For example:
+
+~~~markdown
+Primary header {#element_id .class_name}
+==============
+~~~
+
+Which will become:
+
+~~~html
+<h1 id="element_id" class="class_name">Primary header</h1>
+~~~
+
+Other attributes, including custom ones, can be added by specifying the attribute name, followed by an equal sign, followed by the value of the attribute.
+
+~~~markdown
+En Français {#header2 .section_header lang=fr}
+----------------
+~~~
+The above Markdown syntax will become:
+~~~html
+<h2 id="header2" class="section_header" lang="fr">En Français</h2>
+~~~
+
+NOTE: **Note:** The value of an attribute cannot contain spaces, and so this technique can only used for attributes with simple values.
+
+Special attribute blocks can be applied to:
+
+- headers
+- fenced code blockquotes
+- links
+- images
 
 ## Extras
 
