@@ -951,9 +951,40 @@ A table cell can contain both span and block elements. In cases like this one, M
 
 [TOC=3]
 
+### Automatic Links
+
+xxxxxxxxx
+
 ### Auto-escaping for special characters
 
 xxxxxxxxx
+
+### Backslash escapes
+
+You can use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML `<em>` tag), you can use backslashes before the asterisks, like this:
+
+~~~markdown
+\*literal asterisks\*
+~~~
+
+Markdown provides backslash escapes for the following characters:
+
+~~~markdown
+\   backslash
+`   backtick
+*   asterisk
+_   underscore
+{}  curly braces
+[]  square brackets
+()  parentheses
+#   hash mark
++   plus sign
+-   minus sign (hyphen)
+.   dot
+!   exclamation mark
+:   colon
+|   pipe
+~~~
 
 ### Special attributes
 
@@ -1000,7 +1031,7 @@ For image and links, put the special attribute block immediately after the paren
 Or if using reference-style links and images, put it at the end of the definition line like this:
 
 ~~~markdown
-[link][linkref] 
+[link][linkref]
 ![img][linkref]
 
 [linkref]: url "optional title" {#id .class}
