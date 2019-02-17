@@ -620,6 +620,42 @@ title="MSN Search">MSN</a> have quite managed.</p>
 
 With Markdown’s reference-style links, a source document much more closely resembles the final output, as rendered in a browser. By allowing you to move the markup-related metadata out of the paragraph, you can add links without interrupting the narrative flow of your prose.
 
+### Automatic Links
+
+Markdown provides a shortcut style to create ‘automatic’ links for URLs and email addresses — for situations in which you want to show the *actual* text of a URL or email address and also have it be a clickable link. To do so, simply surround the URL or email address with angle brackets, like so:
+
+~~~markdown
+<http://example.com/>
+~~~
+
+Which Markdown will convert to:
+
+~~~html
+<a href="http://example.com/">http://example.com/</a>
+~~~
+
+Automatic links for email addresses work in the same way, except that Markdown will also perform a bit of randomized decimal and hex entity-encoding to help obscure your address from address-harvesting spambots. For example, Markdown will turn _either_ of these two code snippets:
+
+~~~markdown
+<address@example.com>
+~~~
+~~~markdown
+<mailto:address@example.com>
+~~~
+
+into something like this:
+
+~~~html
+<a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
+&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
+&#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
+&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
+~~~
+
+which will render in a browser as a clickable link to 'address&commat;example.com'.
+
+NOTE: **Note:** This sort of entity-encoding trick will fool a great many address-harvesting bots, but it most certainly won’t fool all of them. Whilst it’s better than nothing, an address published in this way will probably start receiving spam eventually.
+
 ## Images
 
 [TOC=3]
@@ -950,42 +986,6 @@ A table cell can contain both span and block elements. In cases like this one, M
 ## More advanced syntax
 
 [TOC=3]
-
-### Automatic Links
-
-Markdown provides a shortcut style to create ‘automatic’ links for URLs and email addresses — for situations in which you want to show the *actual* text of a URL or email address and also have it be a clickable link. To do so, simply surround the URL or email address with angle brackets, like so:
-
-~~~markdown
-<http://example.com/>
-~~~
-
-Which Markdown will convert to:
-
-~~~html
-<a href="http://example.com/">http://example.com/</a>
-~~~
-
-Automatic links for email addresses work in the same way, except that Markdown will also perform a bit of randomized decimal and hex entity-encoding to help obscure your address from address-harvesting spambots. For example, Markdown will turn _either_ of these two code snippets:
-
-~~~markdown
-<address@example.com>
-~~~
-~~~markdown
-<mailto:address@example.com>
-~~~
-
-into something like this:
-
-~~~html
-<a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
-&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
-&#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
-&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
-~~~
-
-which will render in a browser as a clickable link to 'address&commat;example.com'.
-
-NOTE: **Note:** This sort of entity-encoding trick will fool a great many address-harvesting bots, but it most certainly won’t fool all of them. Whilst it’s better than nothing, an address published in this way will probably start receiving spam eventually.
 
 ### Auto-escaping for special characters
 
