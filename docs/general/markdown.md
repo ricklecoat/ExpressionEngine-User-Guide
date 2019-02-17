@@ -923,7 +923,7 @@ Then the asterisks will be treated literally and the generated output will be en
 </div>
 ~~~
 
-Will be turned into:
+will be turned into:
 
 ~~~html
 <div>
@@ -953,11 +953,77 @@ A table cell can contain both span and block elements. In cases like this one, M
 
 ### Automatic Links
 
-xxxxxxxxx
+Markdown provides a shortcut style to create ‘automatic’ links for URLs and email addresses — for situations in which you want to show the *actual* text of a URL or email address and also have it be a clickable link. To do so, simply surround the URL or email address with angle brackets, like so:
+
+~~~markdown
+<http://example.com/>
+~~~
+
+Which Markdown will convert to:
+
+~~~html
+<a href="http://example.com/">http://example.com/</a>
+~~~
+
+Automatic links for email addresses work in the same way, except that Markdown will also perform a bit of randomized decimal and hex entity-encoding to help obscure your address from address-harvesting spambots. For example, Markdown will turn _either_ of these two code snippets:
+
+~~~markdown
+<address@example.com>
+~~~
+~~~markdown
+<mailto:address@example.com>
+~~~
+
+into something like this:
+
+~~~html
+<a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
+&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
+&#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
+&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
+~~~
+
+which will render in a browser as a clickable link to 'address&commat;example.com'.
+
+NOTE: **Note:** This sort of entity-encoding trick will fool a great many address-harvesting bots, but it most certainly won’t fool all of them. Whilst it’s better than nothing, an address published in this way will probably start receiving spam eventually.
 
 ### Auto-escaping for special characters
 
-xxxxxxxxx
+HTML uses two characters, in particular, that require special treatment: `<` and `&`. Left angle brackets are used to start tags, whilst ampersands denote the beginning of an HTML entity. To use them as literal characters HTML authors need to escape them by using their entity equivalents (eg. `&lt;` and `&amp;` respectively) - something that soon becomes a tiresome chore and can easily be forgotten, leading to a failed HTML validation.
+
+Markdown allows you to use these characters naturally, taking care of all the necessary escaping for you. If you use an ampersand as part of an HTML entity, it remains unchanged; otherwise it will be translated into `&amp;`.
+
+For example, if you want to include a copyright symbol in your article, you can write:
+
+~~~markdown
+&copy;
+~~~
+
+and Markdown will leave it alone. But if you write:
+
+~~~markdown
+AT&T
+~~~
+
+Markdown will translate it to:
+
+~~~html
+AT&amp;T
+~~~
+
+Similarly, because Markdown supports [inline HTML](#inline-html), if you use angle brackets as delimiters for HTML tags, Markdown will treat them as such. But if you write:
+
+~~~markdown
+4 < 5
+~~~
+
+Markdown will translate it to:
+
+~~~html
+4 &lt; 5
+~~~
+
+TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampersands are _always_ encoded automatically. This makes it easy to use Markdown to write about HTML code. (Native HTML, by contrast, is an awkward format for writing about HTML syntax, because every single < and & in your example code needs to be escaped).
 
 ### Backslash escapes
 
