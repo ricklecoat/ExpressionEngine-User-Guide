@@ -884,7 +884,7 @@ pronunciation and their most common words.
 
 
 
-## Inline html
+## Inline HTML
 
 For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
 
@@ -983,11 +983,7 @@ A table cell can contain both span and block elements. In cases like this one, M
 
 
 
-## More advanced syntax
-
-[TOC=3]
-
-### Auto-escaping for special characters
+## Auto-escaping for special characters
 
 HTML uses two characters, in particular, that require special treatment: `<` and `&`. Left angle brackets are used to start tags, whilst ampersands denote the beginning of an HTML entity. To use them as literal characters HTML authors need to escape them by using their entity equivalents (eg. `&lt;` and `&amp;` respectively) - something that soon becomes a tiresome chore and can easily be forgotten, leading to a failed HTML validation.
 
@@ -1025,7 +1021,7 @@ Markdown will translate it to:
 
 TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampersands are _always_ encoded automatically. This makes it easy to use Markdown to write about HTML code. (Native HTML, by contrast, is an awkward format for writing about HTML syntax, because every single < and & in your example code needs to be escaped).
 
-### Backslash escapes
+## Backslash escapes
 
 You can use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML `<em>` tag), you can use backslashes before the asterisks, like this:
 
