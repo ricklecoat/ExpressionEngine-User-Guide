@@ -1031,24 +1031,23 @@ You can use backslash escapes to generate literal characters which would otherwi
 
 Markdown provides backslash escapes for the following characters:
 
-~~~markdown
-\   backslash
-`   backtick
-*   asterisk
-_   underscore
-{}  curly braces
-[]  square brackets
-()  parentheses
-#   hash mark
-+   plus sign
--   minus sign (hyphen)
-.   dot
-!   exclamation mark
-:   colon
-|   pipe
-~~~
+	\   backslash
+	`   backtick
+	*   asterisk
+	_   underscore
+	{}  curly braces
+	[]  square brackets
+	()  parentheses
+	#   hash mark
+	+   plus sign
+	-   minus sign (hyphen)
+	.   dot
+	!   exclamation mark
+	:   colon
+	|   pipe
 
-### Special attributes
+
+## Special attributes
 
 You can set the id and class attribute on certain elements using a special attribute block. The desired attributes are placed inside curly brackets at the end of the line, with multiple attributes being separated by spaces. (An id is denoted using a hash (#) and a class is indicated by using a dot (.), just like in <abbr title="cascading style sheets">CSS</abbr>). For example:
 
@@ -1069,7 +1068,9 @@ Other attributes, including custom ones, can be added by specifying the attribut
 En Français {#header2 .section_header lang=fr}
 ----------------
 ~~~
+
 The above Markdown syntax will become:
+
 ~~~html
 <h2 id="header2" class="section_header" lang="fr">En Français</h2>
 ~~~
