@@ -485,7 +485,7 @@ Lists can be nested, placing a new list inside a list item. To do so, simply ind
 </ul>
 ```
 
-WARN: **Warning:** Do not double-indent in this way (ie. using 8 spaces or two tabs), else you will trigger a [code block](#code-blocks-in-list-items).
+NOTE: **Important:** Do not double-indent in this way (ie. using 8 spaces or two tabs), else you will trigger a [code block](#code-blocks-in-list-items).
 
 
 
@@ -864,7 +864,7 @@ Once converted it might, at first glance, appear to have erroneously swapped the
 
 In fact nothing has gone wrong; Markdown has simply placed the footnotes in the same order as they appear in the text; the fact that they originally used different numbers for their marker IDs is irrelevant.
 
-WARN: **Warning:** You cannot make two links to the same footnotes; if you try to, the second footnote reference will be left as plain text. Similarly, footnote references that are not linked to a valid footnote definition (and vice versa) will remain as plain text.
+NOTE: **Important:** You cannot make two links to the same footnotes; if you try to, the second footnote reference will be left as plain text. Similarly, footnote references that are not linked to a valid footnote definition (and vice versa) will remain as plain text.
 
 ### Block-level content in footnotes
 
@@ -1228,24 +1228,24 @@ In addition to [automatic escaping](#auto-escaping-for-special-characters), you 
 
 Markdown provides backslash escapes for the following characters:
 
-| Char | Entity | Char name |
-| ---- | ------ | --------- |
-| \    | `&#92;` | backslash |
-| `    | `&#96;` | backtick |
-| *    | `&#42;` | asterisk |
-| _    | `&#95;` | underscore |
-| &#39;    | `&#39;` | single quote |
-| &#34;    | `&#34;` | double quote |
-| { }   | `&#123;` / `&#125;` | curly braces |
-| [ ]   | `&#91;` / `&#93;` | square brackets |
-| ( )   | `&#40;` / `&#41;` | parentheses |
-| #    | `&#35;` | hash mark |
-| +    | `&#43;` | plus sign |
-| -    | `&#45;` | minus sign (hyphen) |
-| .    | `&#46;` | dot |
-| !    | `&#33;` | exclamation mark |
-| :    | `&#58;` | colon |
-| \|   | `&#124;` | pipe (vertical bar) |
+| Char   | Entity              | Char name           |
+| ------ | ------------------- | ------------------- |
+| \      | `&#92;`             | backslash           |
+| `      | `&#96;`             | backtick            |
+| *      | `&#42;`             | asterisk            |
+| _      | `&#95;`             | underscore          |
+| &#39;  | `&#39;`             | single quote        |
+| &#34;  | `&#34;`             | double quote        |
+| { }    | `&#123;` / `&#125;` | curly braces        |
+| [ ]    | `&#91;` / `&#93;`   | square brackets     |
+| ( )    | `&#40;` / `&#41;`   | parentheses         |
+| #      | `&#35;`             | hash mark           |
+| +      | `&#43;`             | plus sign           |
+| -      | `&#45;`             | minus sign (hyphen) |
+| .      | `&#46;`             | dot                 |
+| !      | `&#33;`             | exclamation mark    |
+| :      | `&#58;`             | colon               |
+| \|     | `&#124;`            | pipe (vertical bar) |
 
 NOTE: **Note:** Unlike [automatic escaping](#auto-escaping-for-special-characters), backslash escapes use *decimal-encoded* entities rather than named entities. In this respect backslash escapes are like the substitutions performed by [smart typography](#smart-typography).
 
