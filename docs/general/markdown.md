@@ -1034,77 +1034,6 @@ A table cell can contain both span and block elements. In cases like this one, M
 
 
 
-## Auto-escaping for special characters
-
-HTML uses two characters, in particular, that require special treatment: `<` and `&`. Left angle brackets are used to start tags, whilst ampersands denote the beginning of an HTML entity. To use them as literal characters HTML authors need to escape them by using their entity equivalents (eg. `&lt;` and `&amp;` respectively) - something that soon becomes a tiresome chore and can easily be forgotten, leading to a failed HTML validation.
-
-Markdown allows you to use these characters naturally, taking care of all the necessary escaping for you. If you use an ampersand as part of an HTML entity, it remains unchanged; otherwise it will be translated into `&amp;`.
-
-For example, if you want to include a copyright symbol in your article, you can write:
-
-~~~markdown
-&copy;
-~~~
-
-and Markdown will leave it alone. But if you write:
-
-~~~markdown
-AT&T
-~~~
-
-Markdown will translate it to:
-
-~~~html
-AT&amp;T
-~~~
-
-Similarly, because Markdown supports [inline HTML](#inline-html), if you use angle brackets as delimiters for HTML tags, Markdown will treat them as such. But if you write:
-
-~~~markdown
-4 < 5
-~~~
-
-Markdown will translate it to:
-
-~~~html
-4 &lt; 5
-~~~
-
-TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampersands are _always_ encoded automatically. This makes it easy to use Markdown to write about HTML code. (Native HTML, by contrast, is an awkward format for writing about HTML syntax, because every single < and & in your example code needs to be escaped).
-
-
-
-
-
-## Backslash escapes
-
-You can use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML `<em>` tag), you can use backslashes before the asterisks, like this:
-
-~~~markdown
-\*literal asterisks\*
-~~~
-
-Markdown provides backslash escapes for the following characters:
-
-	\   backslash
-	`   backtick
-	*   asterisk
-	_   underscore
-	{}  curly braces
-	[]  square brackets
-	()  parentheses
-	#   hash mark
-	+   plus sign
-	-   minus sign (hyphen)
-	.   dot
-	!   exclamation mark
-	:   colon
-	|   pipe
-
-
-
-
-
 ## Special attributes
 
 You can set the id and class attribute on certain elements using a special attribute block. The desired attributes are placed inside curly brackets at the end of the line, with multiple attributes being separated by spaces. (An id is denoted using a hash (#) and a class is indicated by using a dot (.), just like in <abbr title="cascading style sheets">CSS</abbr>). For example:
@@ -1164,7 +1093,153 @@ Or if using reference-style links and images, put it at the end of the definitio
 
 ## Smart Typography
 
-xxxxxx
+Markdown in ExpressionEngine employs some parts of the SmartyPants library to add some 'smart' typographic nicety to your prose. This allows authors to write using plain old 'straight' quotes, plain dashes (hyphens) and plain dots, safe in the knowledge that their final HTML document will contain curly quotes, en/em-dashes, and proper ellipses. The precise transformations that get applied are as follows:
+
+### Quotes
+
+Various types of quotes are turned into their 'typographic' (curly) equivalents. The kinds of quotes processed in this way are normal (straight) quotes, ‘backtick’-style quotes, and ‘comma’-style quotes. So:
+
+~~~markdown
+'normal single quotes'
+
+"normal single quotes"
+
+``backtick-style quotes''
+
+,,comma-style quotes``
+~~~
+
+becomes:
+
+~~~html
+&#8216;normal single quotes&#8217;
+
+&#8220;normal single quotes&#8221;
+
+&#8220;backtick-style quotes&#8221;
+
+,,comma-style quotes&#8220;
+~~~
+
+which the browser will present as:
+
+~~~
+‘normal single quotes’
+
+“normal single quotes”
+
+“backtick-style quotes”
+
+,,comma-style quotes“
+~~~
+
+### Dashes
+
+Double-dashes will be converted into en-dash entities. Triple-dashes will be converted to em-dash entities. So:
+
+~~~markdown
+An en dash simply means ‘through’, eg. 18 July--12 November.
+
+An em dash is a break---not to be confused with a hyphen.
+~~~
+
+becomes:
+
+~~~html
+<p>An en dash simply means ‘through’, eg. 18 July&#8211;12 November.</p>
+<p>An em dash is a break&#8212;not to be confused with a hyphen.</p>
+~~~
+
+### Ellipses
+
+Three dots in a row will be converted to a proper ellipsis entity:
+
+~~~markdown
+An ellipsis can indicate ... deleted text.
+~~~
+
+becomes:
+
+~~~html
+<p>An ellipsis can indicate &#8230; deleted text.</p>
+~~~
+
+NOTE: **Note:** SmartyPants uses decimal-encoded entities for its substitutions, rather than named entities (eg. `&#8212;` rather than `&mdash;`).
+
+
+
+
+
+## Auto-escaping for special characters
+
+HTML uses two characters, in particular, that require special treatment: `<` and `&`. Left angle brackets are used to start tags, whilst ampersands denote the beginning of an HTML entity. To use them as literal characters HTML authors need to escape them by using their entity equivalents (eg. `&lt;` and `&amp;` respectively) - something that soon becomes a tiresome chore and can easily be forgotten, leading to a failed HTML validation.
+
+Markdown allows you to use these characters naturally, taking care of all the necessary escaping for you. If you use an ampersand as part of an HTML entity, it remains unchanged; otherwise it will be translated into `&amp;`.
+
+For example, if you want to include a copyright symbol in your article, you can write:
+
+~~~markdown
+&copy;
+~~~
+
+and Markdown will leave it alone. But if you write:
+
+~~~markdown
+AT&T
+~~~
+
+Markdown will translate it to:
+
+~~~html
+AT&amp;T
+~~~
+
+Similarly, because Markdown supports [inline HTML](#inline-html), if you use angle brackets as delimiters for HTML tags, Markdown will treat them as such. But if you write:
+
+~~~markdown
+4 < 5
+~~~
+
+Markdown will translate it to:
+
+~~~html
+4 &lt; 5
+~~~
+
+TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampersands are _always_ encoded automatically. This makes it easy to use Markdown to write about HTML code. (Native HTML, by contrast, is an awkward format for writing about HTML syntax, because every single < and & in your example code needs to be escaped).
+
+
+
+
+
+## Backslash escapes
+
+You can use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML `<em>` tag), you can use backslashes before the asterisks, like this:
+
+~~~markdown
+\*literal asterisks\*
+~~~
+
+Markdown provides backslash escapes for the following characters:
+
+| Char | Entity | Char name |
+| ---- | ------ | --------- |
+| \    | `&#92;` | backslash |
+| `    | `&#96;` | backtick |
+| *    | `&#42;` | asterisk |
+| _    | `&#95;` | underscore |
+| &#39;    | `&#39;` | single quote |
+| &#34;    | `&#34;` | double quote |
+| { }   | `&#123;` / `&#125;` | curly braces |
+| [ ]   | `&#91;` / `&#93;` | square brackets |
+| ( )   | `&#40;` / `&#41;` | parentheses |
+| #    | `&#35;` | hash mark |
+| +    | `&#43;` | plus sign |
+| -    | `&#45;` | minus sign (hyphen) |
+| .    | `&#46;` | dot |
+| !    | `&#33;` | exclamation mark |
+| :    | `&#58;` | colon |
+| \|   | `&#124;` | pipe |
 
 
 
