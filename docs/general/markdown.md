@@ -689,7 +689,7 @@ into something like this:
 
 which will render in a browser as a clickable link to 'address&commat;example.com'.
 
-NOTE: **Note:** This sort of entity-encoding trick will fool a great many address-harvesting bots, but it most certainly won’t fool all of them. Whilst it’s better than nothing, an address published in this way will probably start receiving spam eventually.
+NOTE: **Note:** Whilst this sort of entity-encoding trick will fool a great many address-harvesting bots, it definitely won’t fool all of them. It’s better than nothing, certainly, but an address published in this way will probably start receiving spam eventually.
 
 
 
