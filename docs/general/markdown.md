@@ -1093,7 +1093,13 @@ Or if using reference-style links and images, put it at the end of the definitio
 
 ## Smart Typography
 
-Markdown in ExpressionEngine employs some parts of the SmartyPants library to add some 'smart' typographic nicety to your prose. This allows authors to write using plain old 'straight' quotes, plain dashes (hyphens) and plain dots, safe in the knowledge that their final HTML document will contain curly quotes, en/em-dashes, and proper ellipses. The precise transformations that get applied are as follows:
+[TOC=3]
+
+Markdown in ExpressionEngine employs some parts of the SmartyPants library to add some 'smart' typographic nicety to your prose. This allows authors to write using plain old 'straight' quotes, plain dashes (hyphens) and plain dots, safe in the knowledge that their final HTML document will contain curly quotes, en/em-dashes, and proper ellipses.
+
+NOTE: **Note:** These automatic substitutions will not take place within `<pre>`, `<code>`, `<kbd>`, or `<script>` tag blocks — contexts within which such changes may not be required or appropriate.
+
+The precise transformations that get applied are as follows:
 
 ### Quotes
 
@@ -1164,7 +1170,7 @@ becomes:
 <p>An ellipsis can indicate &#8230; deleted text.</p>
 ~~~
 
-TIP: **Tip:** If you wish to use characters that would otherwise be substituted by Smart typography, you can use [Backslash escapes](#backslash-escapes).
+TIP: **Tip:** If you wish characters (that would otherwise be substituted) to be interpreted *literally*, you can use [backslash escapes](#backslash-escapes). For instance, to describe somebody's height you can type `John is 5\'11\" tall`.
 
 
 
@@ -1206,7 +1212,7 @@ Markdown will translate it to:
 4 &lt; 5
 ~~~
 
-TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampersands are _always_ encoded automatically. This makes it easy to use Markdown to write about HTML code. (Native HTML, by contrast, is an awkward format for writing about HTML syntax, because every single < and & in your example code needs to be escaped).
+TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampersands are _always_ encoded automatically. This makes it easy to use Markdown to write about HTML code — unlike native HTML, in which every single < and & in your example code would need to be escaped).
 
 
 
