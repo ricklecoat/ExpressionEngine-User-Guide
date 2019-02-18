@@ -1164,7 +1164,7 @@ becomes:
 <p>An ellipsis can indicate &#8230; deleted text.</p>
 ~~~
 
-NOTE: **Note:** SmartyPants uses decimal-encoded entities for its substitutions, rather than named entities (eg. `&#8212;` rather than `&mdash;`).
+TIP: **Tip:** If you wish to use characters that would otherwise be substituted by Smart typography, you can use [Backslash escapes](#backslash-escapes).
 
 
 
@@ -1214,7 +1214,7 @@ TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampe
 
 ## Backslash escapes
 
-You can use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML `<em>` tag), you can use backslashes before the asterisks, like this:
+In addition to [automatic escaping](#auto-escaping-for-special-characters), you can use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML `<em>` tag), you can use backslashes before the asterisks, like this:
 
 ~~~markdown
 \*literal asterisks\*
@@ -1239,7 +1239,9 @@ Markdown provides backslash escapes for the following characters:
 | .    | `&#46;` | dot |
 | !    | `&#33;` | exclamation mark |
 | :    | `&#58;` | colon |
-| \|   | `&#124;` | pipe |
+| \|   | `&#124;` | pipe (vertical bar) |
+
+NOTE: **Note:** Unlike [automatic escaping](#auto-escaping-for-special-characters), backslash escapes use *decimal-encoded* entities rather than named entities. In this respect backslash escapes are like the substitutions performed by [smart typography](#smart-typography).
 
 
 
