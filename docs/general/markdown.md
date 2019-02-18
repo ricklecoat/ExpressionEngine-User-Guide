@@ -932,19 +932,29 @@ pronunciation and their most common words.
 
 ## Inline HTML
 
+[TOC=3]
+
+### Mixing HTML with Markdown
+
 For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
 
-Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block (a paragraph, list item, header, table, blockquote, code block, etc). You can even use regular HTML tags instead of Markdown formatting, if you are so inclined.
+Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block such as a paragraph, list item, header, table, blockquote, code block, etc. (You can even use regular HTML tags instead of Markdown formatting, if you are so inclined). For example:
 
-There are certain restrictions regarding *block* elements in Markdown:
+~~~html
+This <dfn title="A language for writing prose for the web">Markdown</dfn>
+paragraph has some span-level <abbr title="Hyper Text Markup Language">HTML
+</abbr> in the middle.
+~~~
+
+<!--There are certain restrictions regarding *block* elements in Markdown:
 
 1. The opening tag of a block element must not be indented by more than three spaces. Any tag indented more than that will be treated as a code block according to standard Markdown rules.
-2. When the block element is inside a list item, all its content should be indented with the same amount of space as the list item is indented. (More indentation won’t do any harm as long as the first opening tag is not indented too much, becoming a code block — see first rule.)
+2. When the block element is inside a list item, all its content should be indented with the same amount of space as the list item is indented. (More indentation won’t do any harm as long as the first opening tag is not indented too much, becoming a code block — see first rule.)-->
 
 <!--
 The only restrictions are that block-level HTML elements — e.g. `<div>`, `<table>`, `<pre>`, `<p>`, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. -->
 
-For example, to add a `figure` element to a Markdown article:
+You can add block-level elements as you see fit (although do be aware of the indenting restriction spelled out in the note below), and Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. For example, to add a `<figure>` element to a Markdown article:
 
 ~~~html
 This is a regular paragraph.
@@ -957,28 +967,14 @@ This is a regular paragraph.
 This is another regular paragraph.
 ~~~
 
-Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. Furthermore, if you try and insert block-level HTML inside a paragraph, Markdown will split the paragraph appropriately. For example, this text:
-
-~~~html
-This Markdown paragraph has some <span>span-level
-	(inline) html</span> in the middle.
-~~~
-
-Gives:
-
-~~~html
-<p>This Markdown paragraph has some <span>span-level
-	(inline) html</span> in the middle.</p>
-~~~
-
-However, if we try to force a `<div>` into a Markdown paragraph:
+However, Markdown will _not_ let you violate the rules of HTML by placing block-level elements inside a paragraph. If you try to do so, Markdown will split the paragraph appropriately. For example, if we try to force a `<div>` into a Markdown paragraph:
 
 ~~~html
 This Markdown paragraph has a <div>block-level element</div> in
 the middle. That's not allowed in HTML!
 ~~~
 
-We end up with:
+then we end up with:
 
 ~~~html
 <p>This Markdown paragraph has a</p>
@@ -986,11 +982,35 @@ We end up with:
 <p>in the middle. That’s not allowed in HTML!</p>
 ~~~
 
+NOTE: **Note:** Do not indent the opening tag of a block element by more than three spaces. Any tag indented more than that will be treated as a *code block* according to standard Markdown rules.
 
+### Block elements inside Markdown lists
 
+https://github.com/michelf/php-markdown/issues/305
 
+To place an block-level element inside a list item, it must be indented by exactly 4 spaces (these 4 spaces can include the list marker, eg. `-[space][space][space]<div>...</div>` or `1.[space][space]<div>...</div>`). In this respect the block element is treated much like a [paragraph inside a list](#paragraphs-in-list-items). Here are some examples, along with the HTML that they generate:
 
-## Markdown inside HTML
+Example A:
+~~~markdown
+- <div>THIS IS THE DIV</div>
+~~~
+~~~html
+<ul>
+    <li><div>THIS IS THE DIV</div></li>
+</ul>
+~~~
+
+Example B:
+~~~markdown
+- <div>THIS IS THE DIV</div>
+~~~
+~~~html
+<ul>
+    <li><div>THIS IS THE DIV</div></li>
+</ul>
+~~~
+
+### Markdown inside HTML
 
 Markdown syntax inside _span-level_ HTML elements is processed as normal.
 
