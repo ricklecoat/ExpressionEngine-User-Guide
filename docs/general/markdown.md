@@ -1100,6 +1100,10 @@ Or if using reference-style links and images, put it at the end of the definitio
 [linkref]: url "optional title" {#id .class}
 ~~~
 
+## Smart Typography
+
+xxxxxx
+
 ## Extras
 
 Markdown generates HTML that will be compatible with both an XHTML and HTML doctype — in other words, element tags such as `<image />`, `<br />`, & `<hr />` will be created with a self-closing forward slash at the end, and closing tags _will_ be created for elements where a closing tag is theoretically optional.
