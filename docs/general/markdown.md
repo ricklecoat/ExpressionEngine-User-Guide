@@ -15,6 +15,10 @@ ExpressionEngine’s implementation of Markdown, for the most part, follows [Jon
 
 In order to remedy this situation we have combined and summarised those third party guides into a single, unified reference source on this page.
 
+
+
+
+
 ## An introduction to Markdown
 
 ### What is Markdown?
@@ -29,11 +33,19 @@ For more information about the philosophy and concepts behind Markdown, visit th
 
 Markdown is not intended as a replacement for HTML, but rather to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
 
+
+
+
+
 ## Paragraphs and line breaks
 
 A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line; a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.
 
 To insert a simple `<br>` line break rather than start a new paragraph, simply finish your text with two spaces, followed by a _single_ carriage return.
+
+
+
+
 
 ## Headers
 
@@ -55,6 +67,10 @@ This is an H2
 ```
 
 Any number of the underlining characters (= or -) will work.
+
+
+
+
 
 ## Blockquotes
 
@@ -109,6 +125,10 @@ Additionally, Blockquotes can contain other Markdown elements, such as Headers, 
 >     return shell_exec("echo $input | $markdown_script");
 ~~~
 
+
+
+
+
 ## Horizontal rules
 
 Three or more hyphens, asterisks, or underscores, when placed on a line on their own, will generate a horizontal rule (`<hr />`). Spaces between the hyphens or asterisks are permitted. Each of the following lines will produce a horizontal rule:
@@ -120,6 +140,10 @@ Three or more hyphens, asterisks, or underscores, when placed on a line on their
 - - -
 __________
 ~~~
+
+
+
+
 
 ## Code
 
@@ -220,6 +244,9 @@ You can expand the above trick to include certain additional attributes by using
 <p>This link takes you <a href="http://amazing.com">somewhere amazing</a>, so click it!</p>
 ~~~
 ```
+
+
+
 
 
 ## Lists
@@ -460,6 +487,10 @@ Lists can be nested, placing a new list inside a list item. To do so, simply ind
 
 WARN: **Warning:** Do not double-indent in this way (ie. using 8 spaces or two tabs), else you will trigger a [code block](#code-blocks-in-list-items).
 
+
+
+
+
 ## Tables
 
 Markdown lets you easily create basic tables with a simple syntax. A ‘basic’ table is constructed like so:
@@ -525,6 +556,10 @@ You can apply span-level formatting to the content of each cell using regular Ma
 | `help()`      | Display the help window.       |
 | `destroy()`   | **Destroy your computer!**     |
 ~~~
+
+
+
+
 
 ## Links
 
@@ -656,6 +691,10 @@ which will render in a browser as a clickable link to 'address&commat;example.co
 
 NOTE: **Note:** This sort of entity-encoding trick will fool a great many address-harvesting bots, but it most certainly won’t fool all of them. Whilst it’s better than nothing, an address published in this way will probably start receiving spam eventually.
 
+
+
+
+
 ## Images
 
 [TOC=3]
@@ -709,6 +748,8 @@ Currently, Markdown has no syntax for specifying the dimensions of an image; if 
 
 
 
+
+
 ## Emphasis
 
 Asterisks (\*) and underscores (\_) are used to indicate emphasis. Text wrapped with a single \* or \_ will be wrapped with an HTML `<em>` tag; using double \*’s or double \_’s will wrap the text in a `<strong>` tag. So:
@@ -748,6 +789,9 @@ When * or _ are surrounded with spaces they will always be treated as literal as
 ~~~
 \*Some text surrounded by literal asterisks\*
 ~~~
+
+
+
 
 
 ## Footnotes
@@ -884,6 +928,8 @@ pronunciation and their most common words.
 
 
 
+
+
 ## Inline HTML
 
 For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
@@ -941,6 +987,9 @@ We end up with:
 ~~~
 
 
+
+
+
 ## Markdown inside HTML
 
 Markdown syntax inside _span-level_ HTML elements is processed as normal.
@@ -983,6 +1032,8 @@ A table cell can contain both span and block elements. In cases like this one, M
 
 
 
+
+
 ## Auto-escaping for special characters
 
 HTML uses two characters, in particular, that require special treatment: `<` and `&`. Left angle brackets are used to start tags, whilst ampersands denote the beginning of an HTML entity. To use them as literal characters HTML authors need to escape them by using their entity equivalents (eg. `&lt;` and `&amp;` respectively) - something that soon becomes a tiresome chore and can easily be forgotten, leading to a failed HTML validation.
@@ -1021,6 +1072,10 @@ Markdown will translate it to:
 
 TIP: **Tip:** Inside Markdown’s code spans and blocks, angle brackets and ampersands are _always_ encoded automatically. This makes it easy to use Markdown to write about HTML code. (Native HTML, by contrast, is an awkward format for writing about HTML syntax, because every single < and & in your example code needs to be escaped).
 
+
+
+
+
 ## Backslash escapes
 
 You can use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks (instead of an HTML `<em>` tag), you can use backslashes before the asterisks, like this:
@@ -1045,6 +1100,9 @@ Markdown provides backslash escapes for the following characters:
 	!   exclamation mark
 	:   colon
 	|   pipe
+
+
+
 
 
 ## Special attributes
@@ -1100,15 +1158,27 @@ Or if using reference-style links and images, put it at the end of the definitio
 [linkref]: url "optional title" {#id .class}
 ~~~
 
+
+
+
+
 ## Smart Typography
 
 xxxxxx
+
+
+
+
 
 ## Extras
 
 Markdown generates HTML that will be compatible with both an XHTML and HTML doctype — in other words, element tags such as `<image />`, `<br />`, & `<hr />` will be created with a self-closing forward slash at the end, and closing tags _will_ be created for elements where a closing tag is theoretically optional.
 
 John Gruber has made a [Markdown web dingus](https://daringfireball.net/projects/markdown/dingus) available at Daring Fireball that you can use to try out Markdown and practice getting to grips with the syntax.
+
+
+
+
 
 ## Abbreviations
 
