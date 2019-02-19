@@ -253,64 +253,81 @@ You can expand the above trick to include certain additional attributes by using
 
 [TOC=3]
 
-Markdown supports ordered (numbered), unordered (bulleted), and definition lists. To create a list in Markdown, simply start each list item with the appropriate ‘list marker’.
+Markdown supports ordered (numbered), unordered (bulleted), and definition lists. To create a list, simply start each list item with the appropriate ‘list marker’. The character used for the list marker will vary according to the type of list required (see specific list types, below).
 
-List markers typically sit at the left margin but may be indented by up to three spaces, and they must be followed by one or more spaces or a tab. The character used for the list marker will vary according to the type of list required.
+The original Markdown guidelines state that:
+
+> List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab.
+
+**However**, it is generally a better idea to *always* keep the marker at the left margin, and then to follow it with an indent  of *4 characters* — but note that those 4 characters **can include the list marker itself**, as shown in this example showing list items with ‘markers’ of various lengths:
+
+**However**, it is generally a better idea to *always* keep the marker at the left margin, and then to follow it with an indent  of *4 characters* — but note that those 4 characters **can include the list marker itself**, as shown in this example showing list items with ‘markers’ of various lengths:
+
+~~~markdown
+-   Content
+1.  Content
+25. Content
+~~~
+
+In each case, the word ‘Content’ is preceded by an indent of 4 characters — the list marker makes up some of those 4 characters, and spaces make up the remainder. This format is a little more rigid than the rules generally require, but will make things simpler if you need insert block-level HTML into a list item, where the 4-character indent is necessary.
+
+
+
 
 ### Unordered lists
 The list markers for unordered lists are asterisks, pluses and hyphens, and they are entirely interchangeable. So:
 
-```markdown
-+ Mercury
-* Venus
-* Mars
-- Jupiter
-+ Saturn
-- Uranus
-* Neptune
-```
+~~~markdown
++   Mercury
+*   Venus
+*   Mars
+-   Jupiter
++   Saturn
+-   Uranus
+*   Neptune
+~~~
 
 will generate the following HTML output:
 
-```html
+~~~html
 <ul>
-	<li>Mercury</li>
-	<li>Venus</li>
-	<li>Mars</li>
-	<li>Jupiter</li>
-	<li>Saturn</li>
-	<li>Uranus</li>
-	<li>Neptune</li>
+    <li>Mercury</li>
+    <li>Venus</li>
+    <li>Mars</li>
+    <li>Jupiter</li>
+    <li>Saturn</li>
+    <li>Uranus</li>
+    <li>Neptune</li>
 </ul>
-```
+~~~
 
 ### Ordered lists
 Ordered lists, naturally enough, use numbers followed by periods. Note, however, that the actual numbers used *have no impact on the generated HTML*, with the exception of the **first** number (see Tip below). So the following code blocks:
 
-```markdown
+~~~markdown
 1.  Car
 2.  Plane
 3.  Ship
-```
-```markdown
+~~~
+~~~markdown
 1.  Car
-102.  Plane
-27.  Ship
-```
+99. Plane
+27. Ship
+~~~
 
 …are equivalent to each other, and will both generate the following HTML:
 
-```html
+~~~html
 <ol>
-	<li>Car</li>
-	<li>Plane</li>
-	<li>Ship</li>
+    <li>Car</li>
+    <li>Plane</li>
+    <li>Ship</li>
 </ol>
-```
+~~~
 
-NOTE: **Note:** If an ordered list starts with a number _other_ than 1, Markdown will honor that in the HTML output. So an unordered list in Markdown that starts with `5. Car` will output an opening tag of `<ol start="5">`. This allows you to continue a list after (for example) an intervening paragraph of text.
+If an ordered list starts with a number _other_ than 1, Markdown will honor that in the HTML output. So an unordered list in Markdown that starts with `7.  Car` will output an opening tag of `<ol start="7">`. This allows you to continue a list after (for example) an intervening paragraph of text.
 
-TIP: **Tip:** You may have a regular paragraph that just so happens to start with a number-period-space sequence. In this situation you can avoid accidentally triggering an ordered list by escaping the period with a backslash, eg. `40\. What a great Age!`
+TIP: **Tip:** Should you have a regular paragraph that just so happens to start with a number-period-space sequence, you can avoid accidentally triggering an ordered list by using a [backslash escape](#backslash-escapes), eg. `40\. What a great Age!`
 
 ### Definition lists
 
@@ -320,26 +337,26 @@ The colon is the list marker, and follows the standard rules for list markers: i
 
 Further terms must be separated from the previous definition by a blank line.
 
-```markdown
+~~~markdown
 Apple
-:  Pomaceous fruit of plants of the genus Malus in
-   the family Rosaceae.
+:   Pomaceous fruit of plants of the genus Malus in
+    the family Rosaceae.
 
 Orange
-:  The fruit of an evergreen tree of the genus Citrus.
-```
-```HTML
+:   The fruit of an evergreen tree of the genus Citrus.
+~~~
+~~~HTML
 <dl>
-<dt>Apple</dt>
-<dd>Pomaceous fruit of plants of the genus Malus in the family Rosaceae.</dd>
-<dt>Orange</dt>
-<dd>The fruit of an evergreen tree of the genus Citrus.</dd>
+    <dt>Apple</dt>
+    <dd>Pomaceous fruit of plants of the genus Malus in the family Rosaceae.</dd>
+    <dt>Orange</dt>
+    <dd>The fruit of an evergreen tree of the genus Citrus.</dd>
 </dl>
-```
+~~~
 TIP: **Tip:** It is the *Definition* part of a Term/Definition pair that is treated as the list item by Markdown, and as such the definition can take advantage of features such as [optional indenting](#optional-indenting-text-in-list-items), and [multiple paragraphs](#paragraphs-in-list-items).
 
 You can also have terms with more than one definition:
-```markdown
+~~~markdown
 Apple
 :   Pomaceous fruit of plants of the genus Malus in
     the family Rosaceae.
@@ -347,88 +364,88 @@ Apple
 
 Orange
 :   The fruit of an evergreen tree of the genus Citrus.
-```
+~~~
 You can also have definitions with more than one term:
-```markdown
+~~~markdown
 Term 1
 Term 2
 :   Definition a
 
 Term 3
 :   Definition b
-```
+~~~
 
 ### Optional indenting text in list items
 
 It looks neater, and could be considered more readable, if text in a list item is indented:
-```markdown
+~~~markdown
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
     Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
     viverra nec, fringilla in, laoreet vitae, risus.
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
-```
+~~~
 But it doesn't need to be. The following Markdown syntax block will generate the exact same HTML as the one above.
-```markdown
+~~~markdown
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
 viverra nec, fringilla in, laoreet vitae, risus.
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
 Suspendisse id sem consectetuer libero luctus adipiscing.
-```
+~~~
 The same is true for the definition parts of a definition list (remember, it is the definition that is treated as a list item). The following two blocks will generate identical HTML:
-```markdown
+~~~markdown
 Mollusc
-:  An invertebrate of a large phylum which includes
-   snails, slugs, mussels, and octopuses. They have
-   a soft unsegmented body and live in aquatic or damp
-   habitats, and most kinds have an external calcareous shell.
-```
-```markdown
+:   An invertebrate of a large phylum which includes
+    snails, slugs, mussels, and octopuses. They have
+    a soft unsegmented body and live in aquatic or damp
+    habitats, and most kinds have an external calcareous shell.
+~~~
+~~~markdown
 Mollusc
-:  An invertebrate of a large phylum which includes
+:   An invertebrate of a large phylum which includes
 snails, slugs, mussels, and octopuses. They have a
 soft unsegmented body and live in aquatic or damp
 habitats, and most kinds have an external calcareous shell.
-```
+~~~
 
 ### Paragraphs in list items
 
 List items can contain paragraphs. If you put blank lines between items, you’ll get `<p>` tags wrapped around the list item text:
 
-```markdown
-- Eggs
+~~~markdown
+-   Eggs
 
-- Ham
+-   Ham
 
-- Coffee
-```
-```HTML
+-   Coffee
+~~~
+~~~HTML
 <ul>
-	<li><p>Eggs</p></li>
-	<li><p>Ham</p></li>
-	<li><p>Coffee</p></li>
+    <li><p>Eggs</p></li>
+    <li><p>Ham</p></li>
+    <li><p>Coffee</p></li>
 </ul>
-```
+~~~
 NOTE: **Note:** A list item will receive paragraph tags if it has a blank space either above **or** below it. Exceptions to this are the first list item (which only reacts to a blank line below it), and the last item (which only reacts to a blank line above it).
 
 List items may consist of multiple paragraphs. Each subsequent paragraph in a list item must be indented by either 4 spaces or one tab:
 
-```markdown
-1.  This is a list item with two paragraphs. Lorem ipsum dolor
-    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
-    mi posuere lectus.
+~~~markdown
+1.  This is the first of two paragraphs in a list item. You can see here
+    how sticking to a 4-character indent (including the list marker) pays
+    dividends in this situation, as it gives us something to align to.
 
-	The second paragaph. Vestibulum enim wisi, viverra nec
-    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
-    sit amet velit.
+    This is the second paragraph. It’s not a new list item so it doesn’t
+    need a list marker, but it is indented by 4 spaces (or 1 tab).
 
-2.  Suspendisse id sem consectetuer libero luctus adipiscing.
-```
+2.  This is a second list item; its text is also wrapped in a paragraph
+    because of the blank line preceding it.
+~~~
 
 To wrap definition text in `<p>` tags, make sure that there is a line between the term and the definition.
 
-```markdown
+~~~markdown
 Term 1
 
 :   This is a definition with two paragraphs. Lorem ipsum
@@ -441,51 +458,85 @@ Term 1
 
 :   Second definition for term 1, also wrapped in a paragraph
     because of the blank line preceding it.
-	```
+~~~
 
 ### Blockquotes in list items
-To put a blockquote within a list item, the blockquote’s `>` delimiters need to be indented:
-```markdown
+To put a blockquote within a list item, the blockquote must be separated by a blank line and its `>` delimiters need to be indented by 4 spaces or 1 tab:
+~~~markdown
 +   This list item contains a blockquote.
 
     > This is a blockquote
     > inside the list item
-```
+~~~
 
 ### Code blocks in list items
-To put a code block within a list item, the code block needs to be indented *twice* — 8 spaces or two tabs:
-```markdown
+To put a code block within a list item, the code block must be separated by a blank line and indented *twice* — 8 spaces or two tabs, like so:
+~~~markdown
 +   This list item contains a code block.
 
         <some code inside a list item>
-```
+~~~
 
 ### Nesting lists
 
-Lists can be nested, placing a new list inside a list item. To do so, simply indent the list item(s) of he nested lists by 4 spaces or 1 tab. The type of list that you nest in this way need not be of the same type as the parent list.
+Lists can be nested, placing a new list inside a list item. To do so, simply indent the list item(s) of the nested list by 4 spaces (or 1 tab).
 
-```markdown
-- First list item
-- Second list item
+~~~markdown
+-   First list item
+-   Second list item
     1. First nested list item
     2. Second nested list item
     3. Third nested list item
-- Third list item
-```
-```html
+-   Third list item
+~~~
+~~~html
 <ul>
-	<li>First list item</li>
-	<li>Second list item</li>
-	    <ol>
-			<li>First nested list item</li>
-		    <li>Second nested list item</li>
-		    <li>Third nested list item</li>
-		</ol>
-	<li>Third list item</li>
+    <li>First list item</li>
+    <li>Second list item
+        <ol>
+            <li>First nested list item</li>
+            <li>Second nested list item</li>
+            <li>Third nested list item</li>
+        </ol>
+	</li>
+    <li>Third list item</li>
 </ul>
-```
+~~~
 
-NOTE: **Important:** Do not double-indent in this way (ie. using 8 spaces or two tabs), else you will trigger a [code block](#code-blocks-in-list-items).
+Adding blank separator lines will also introduce paragraphs, [as described above](#paragraphs-in-list-items).
+
+~~~markdown
+-   First list item
+-   Second list item
+    1. First nested list item
+
+    2. Second nested list item
+    3. Third nested list item
+
+-   Third list item
+~~~
+~~~html
+<ul>
+    <li>First list item</li>
+    <li>
+        <p>Second list item</p>
+        <ol>
+            <li>
+                <p>First nested list item</p>
+            </li>
+            <li>
+                <p>Second nested list item</p>
+            </li>
+            <li>Third nested list item</li>
+        </ol>
+    </li>
+    <li>
+        <p>Third list item</p>
+    </li>
+</ul>
+~~~
+
+TIP: **Tip:** The type of list that you nest in this way need not be of the same type as the parent list.
 
 
 
@@ -982,7 +1033,7 @@ then we end up with:
 <p>in the middle. That’s not allowed in HTML!</p>
 ~~~
 
-NOTE: **Note:** Do not indent the opening tag of a block element by more than three spaces. Any tag indented more than that will be treated as a *code block* according to standard Markdown rules.
+NOTE: **Note:** Do not indent the opening tag of a block element by more than three spaces. Any tag indented more than that will be treated as a [code block](#code-blocks-indented) according to standard Markdown rules.
 
 ### Block elements inside Markdown lists
 
