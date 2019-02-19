@@ -37,6 +37,104 @@ Markdown is not intended as a replacement for HTML, but rather to make it easy t
 
 
 
+## Inline HTML
+
+[TOC=3]
+
+### Mixing HTML with Markdown
+
+For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
+
+Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block such as a paragraph, list item, header, table, blockquote, code block, etc. (You can even use regular HTML tags instead of Markdown formatting, if you are so inclined). For example:
+
+~~~html
+This <dfn title="A language for writing prose for the web">Markdown</dfn>
+paragraph has some span-level <abbr title="Hyper Text Markup Language">HTML
+</abbr> in the middle.
+~~~
+
+<!--There are certain restrictions regarding *block* elements in Markdown:
+
+1. The opening tag of a block element must not be indented by more than three spaces. Any tag indented more than that will be treated as a code block according to standard Markdown rules.
+2. When the block element is inside a list item, all its content should be indented with the same amount of space as the list item is indented. (More indentation won’t do any harm as long as the first opening tag is not indented too much, becoming a code block — see first rule.)-->
+
+<!--
+The only restrictions are that block-level HTML elements — e.g. `<div>`, `<table>`, `<pre>`, `<p>`, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. -->
+
+You can add block-level elements as you see fit (although do be aware of the indenting restriction spelled out in the note below), and Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. For example, to add a `<figure>` element to a Markdown article:
+
+~~~html
+This is a regular paragraph.
+
+<figure>
+    <img src="/imgs/pink_elephant.jpg" alt="a pink elephant">
+    <figcaption>Fig.1 - Sighted in Nowhereland</figcaption>
+</figure>
+
+This is another regular paragraph.
+~~~
+
+However, Markdown will _not_ let you violate the rules of HTML by placing block-level elements inside a paragraph. If you try to do so, Markdown will split the paragraph appropriately. For example, if we try to force a `<div>` into a Markdown paragraph:
+
+~~~html
+This Markdown paragraph has a <div>block-level element</div> in
+the middle. That's not allowed in HTML!
+~~~
+
+then we end up with:
+
+~~~html
+<p>This Markdown paragraph has a</p>
+<div>block-level element</div>
+<p>in the middle. That’s not allowed in HTML!</p>
+~~~
+
+NOTE: **Note:** Do not indent the opening tag of a block element by more than three spaces. Any tag indented more than that will be treated as a [code block](#code-blocks-indented) according to standard Markdown rules.
+
+### Using Markdown inside HTML elements
+
+Markdown syntax inside _span-level_ HTML elements is processed as normal.
+
+In order for Markdown syntax to be processed inside *block-level* HTML elements, you can add the attribute  `markdown="1"` to the HTML element in question. This attribute will be stripped from the generated output, but will permit Markdown syntax to be correctly processed inside that HTML element. Note that the effects of the attribute are not passed onward to other, nested HTML elements. So if your Markdown document contains:
+
+~~~html
+<div>
+	This text has some **heavy** emphasis.
+</div>
+~~~
+Then the asterisks will be treated literally and the generated output will be entirely unchanghed. Whereas:
+~~~html
+<div markdown="1">
+	This text has some **heavy** emphasis.
+</div>
+~~~
+
+will be turned into:
+
+~~~html
+<div>
+    This text has some <strong>heavy</strong> emphasis.
+</div>
+~~~
+
+Markdown will apply the correct formatting intelligently according to the block element you put the markdown attribute on. If you apply the markdown attribute to a `<p>` tag for instance, it will only produce span-level elements inside — it won’t allow things such as lists, blockquotes, code blocks.
+
+However, in some circumstances this can be ambiguous, such as:
+
+~~~html
+<table>
+	<tr>
+		<td markdown="1">This is *true* markdown text.</td>
+	</tr>
+</table>
+~~~
+
+A table cell can contain both span and block elements. In cases like this one, Markdown will only apply span-level rules. If you wish to enable block constructs, simply write `markdown="block"` instead.
+
+
+
+
+
 ## Paragraphs and line breaks
 
 A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line; a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.
@@ -475,6 +573,32 @@ To put a code block within a list item, the code block must be separated by a bl
 +   This list item contains a code block.
 
         <some code inside a list item>
+~~~
+
+### Block-level HTML elements inside lists
+
+https://github.com/michelf/php-markdown/issues/305
+
+To place an block-level element inside a list item, it must be indented by exactly 4 spaces (these 4 spaces can include the list marker, eg. `-[space][space][space]<div>...</div>` or `1.[space][space]<div>...</div>`). In this respect the block element is treated much like a [paragraph inside a list](#paragraphs-in-list-items). Here are some examples, along with the HTML that they generate:
+
+Example A:
+~~~markdown
+- <div>THIS IS THE DIV</div>
+~~~
+~~~html
+<ul>
+    <li><div>THIS IS THE DIV</div></li>
+</ul>
+~~~
+
+Example B:
+~~~markdown
+- <div>THIS IS THE DIV</div>
+~~~
+~~~html
+<ul>
+    <li><div>THIS IS THE DIV</div></li>
+</ul>
 ~~~
 
 ### Nesting lists
@@ -976,130 +1100,6 @@ pronunciation and their most common words.
     > But they’re all lovely.
 
 ~~~
-
-
-
-
-
-## Inline HTML
-
-[TOC=3]
-
-### Mixing HTML with Markdown
-
-For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
-
-Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block such as a paragraph, list item, header, table, blockquote, code block, etc. (You can even use regular HTML tags instead of Markdown formatting, if you are so inclined). For example:
-
-~~~html
-This <dfn title="A language for writing prose for the web">Markdown</dfn>
-paragraph has some span-level <abbr title="Hyper Text Markup Language">HTML
-</abbr> in the middle.
-~~~
-
-<!--There are certain restrictions regarding *block* elements in Markdown:
-
-1. The opening tag of a block element must not be indented by more than three spaces. Any tag indented more than that will be treated as a code block according to standard Markdown rules.
-2. When the block element is inside a list item, all its content should be indented with the same amount of space as the list item is indented. (More indentation won’t do any harm as long as the first opening tag is not indented too much, becoming a code block — see first rule.)-->
-
-<!--
-The only restrictions are that block-level HTML elements — e.g. `<div>`, `<table>`, `<pre>`, `<p>`, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. -->
-
-You can add block-level elements as you see fit (although do be aware of the indenting restriction spelled out in the note below), and Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. For example, to add a `<figure>` element to a Markdown article:
-
-~~~html
-This is a regular paragraph.
-
-<figure>
-    <img src="/imgs/pink_elephant.jpg" alt="a pink elephant">
-    <figcaption>Fig.1 - Sighted in Nowhereland</figcaption>
-</figure>
-
-This is another regular paragraph.
-~~~
-
-However, Markdown will _not_ let you violate the rules of HTML by placing block-level elements inside a paragraph. If you try to do so, Markdown will split the paragraph appropriately. For example, if we try to force a `<div>` into a Markdown paragraph:
-
-~~~html
-This Markdown paragraph has a <div>block-level element</div> in
-the middle. That's not allowed in HTML!
-~~~
-
-then we end up with:
-
-~~~html
-<p>This Markdown paragraph has a</p>
-<div>block-level element</div>
-<p>in the middle. That’s not allowed in HTML!</p>
-~~~
-
-NOTE: **Note:** Do not indent the opening tag of a block element by more than three spaces. Any tag indented more than that will be treated as a [code block](#code-blocks-indented) according to standard Markdown rules.
-
-### Block elements inside Markdown lists
-
-https://github.com/michelf/php-markdown/issues/305
-
-To place an block-level element inside a list item, it must be indented by exactly 4 spaces (these 4 spaces can include the list marker, eg. `-[space][space][space]<div>...</div>` or `1.[space][space]<div>...</div>`). In this respect the block element is treated much like a [paragraph inside a list](#paragraphs-in-list-items). Here are some examples, along with the HTML that they generate:
-
-Example A:
-~~~markdown
-- <div>THIS IS THE DIV</div>
-~~~
-~~~html
-<ul>
-    <li><div>THIS IS THE DIV</div></li>
-</ul>
-~~~
-
-Example B:
-~~~markdown
-- <div>THIS IS THE DIV</div>
-~~~
-~~~html
-<ul>
-    <li><div>THIS IS THE DIV</div></li>
-</ul>
-~~~
-
-### Using Markdown inside HTML elements
-
-Markdown syntax inside _span-level_ HTML elements is processed as normal.
-
-In order for Markdown syntax to be processed inside *block-level* HTML elements, you can add the attribute  `markdown="1"` to the HTML element in question. This attribute will be stripped from the generated output, but will permit Markdown syntax to be correctly processed inside that HTML element. Note that the effects of the attribute are not passed onward to other, nested HTML elements. So if your Markdown document contains:
-
-~~~html
-<div>
-	This text has some **heavy** emphasis.
-</div>
-~~~
-Then the asterisks will be treated literally and the generated output will be entirely unchanghed. Whereas:
-~~~html
-<div markdown="1">
-	This text has some **heavy** emphasis.
-</div>
-~~~
-
-will be turned into:
-
-~~~html
-<div>
-    This text has some <strong>heavy</strong> emphasis.
-</div>
-~~~
-
-Markdown will apply the correct formatting intelligently according to the block element you put the markdown attribute on. If you apply the markdown attribute to a `<p>` tag for instance, it will only produce span-level elements inside — it won’t allow things such as lists, blockquotes, code blocks.
-
-However, in some circumstances this can be ambiguous, such as:
-
-~~~html
-<table>
-	<tr>
-		<td markdown="1">This is *true* markdown text.</td>
-	</tr>
-</table>
-~~~
-
-A table cell can contain both span and block elements. In cases like this one, Markdown will only apply span-level rules. If you wish to enable block constructs, simply write `markdown="block"` instead.
 
 
 
