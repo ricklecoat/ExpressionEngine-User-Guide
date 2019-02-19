@@ -832,11 +832,11 @@ Generates:
 </div>
 ~~~
 
-This looks a little cryptic, but what the browser will display to the end user is this:
+and what the end user sees in the browser is this:
 
-> This is some text with a footnote.<sup><a href="#fnote1b" id="fnote1a">1</a></sup>
+> This is some text with a footnote.<sup id="fnref:1"><a href="#fn:1">1</a></sup>
 > ***
-> 1. And this is the footnote itself. <a href="#fnote1a" id="fnote1b">↩︎</a>
+> <span id="fn:1">1. And this is the footnote itself. <a href="#fnref:1">↩︎</a></span>
 
 ### ID names and footnote ordering
 
@@ -1010,7 +1010,7 @@ Example B:
 </ul>
 ~~~
 
-### Markdown inside HTML
+### Using Markdown inside HTML elements
 
 Markdown syntax inside _span-level_ HTML elements is processed as normal.
 
