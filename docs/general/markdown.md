@@ -351,23 +351,21 @@ You can expand the above trick to include certain additional attributes by using
 
 [TOC=3]
 
-Markdown supports ordered (numbered), unordered (bulleted), and definition lists. To create a list, simply start each list item with the appropriate ‘list marker’. The character used for the list marker will vary according to the type of list required (see specific list types, below).
+Markdown supports ordered (numbered), unordered (bulleted), and definition lists. To create a list, simply start each list item with the appropriate ‘list marker’. The character used for the list marker will vary according to the type of list desired.
 
-The original Markdown guidelines state that:
-
-> List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab.
-
-**However**, it is generally a better idea to *always* keep the marker at the left margin, and then to follow it with an indent  of *4 characters* — but note that those 4 characters **can include the list marker itself**, as shown in this example showing list items with ‘markers’ of various lengths:
-
-**However**, it is generally a better idea to *always* keep the marker at the left margin, and then to follow it with an indent  of *4 characters* — but note that those 4 characters **can include the list marker itself**, as shown in this example showing list items with ‘markers’ of various lengths:
+The list marker sits at the left margin and should be followed by a certain number of spaces, like so:
 
 ~~~markdown
--   Content
-1.  Content
-25. Content
+-   List item content (3 spaces placed after marker)
+1.  List item content (2 spaces placed after marker)
+25. List item content (1 space placed after marker)
 ~~~
 
-In each case, the word ‘Content’ is preceded by an indent of 4 characters — the list marker makes up some of those 4 characters, and spaces make up the remainder. This format is a little more rigid than the rules generally require, but will make things simpler if you need insert block-level HTML into a list item, where the 4-character indent is necessary.
+Notice how, in each case, the list item content is preceded by **a total of 4 characters** — the list marker makes up *some* of those 4 characters, and spaces make up the remainder. This allows the actual content of list items to align neatly with any text that has a standard 4-space (1-tab) indent.
+
+The benefit is that certain other features that Markdown makes available for lists — such as [adding block-level HTML](#block-level-html-elements-in-lists), or [nesting lists inside each other](#nesting-lists) — require text to be correctly aligned against a 4-space indent, and we make things significantly easier for ourselves if we build that spacing into our syntax from the outset.
+
+NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>. However, as noted above, keeping to the more rigid structure bring its own advantages.
 
 
 
@@ -575,29 +573,74 @@ To put a code block within a list item, the code block must be separated by a bl
         <some code inside a list item>
 ~~~
 
-### Block-level HTML elements inside lists
+### Block-level HTML elements in lists
 
-https://github.com/michelf/php-markdown/issues/305
+<!-- https://github.com/michelf/php-markdown/issues/305 -->
 
-To place an block-level element inside a list item, it must be indented by exactly 4 spaces (these 4 spaces can include the list marker, eg. `-[space][space][space]<div>...</div>` or `1.[space][space]<div>...</div>`). In this respect the block element is treated much like a [paragraph inside a list](#paragraphs-in-list-items). Here are some examples, along with the HTML that they generate:
+In order to be able to place block-level HTML content *within* a list item:
 
-Example A:
+1.  You must have a blank line either within a list item, or between list items.
+2.  The block-element must also be indented by 4 spaces or 1 tab.
+
+NOTE: **Important:** Failing to adhere to *either* of the above rules regarding blank lines and/or 4-space indenting will cause Markdown to split the list — closing it off before the block HTML and reopening it afterwards. In other words, rather than being contained within a list item as intended, the HTML block will sit in between two separate list elements.
+
+As with other contexts, Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. Below is an example, along with the HTML that it generates.
+
 ~~~markdown
-- <div>THIS IS THE DIV</div>
+-   List item 1 — the blank line below means that this will be a paragraph
+
+    <div>Block-level content contained within the list item</div>
+-   List item 2
+-   List item 3
 ~~~
+
 ~~~html
 <ul>
-    <li><div>THIS IS THE DIV</div></li>
+    <li>
+        <p>List item 1 — the blank line below means that this will be a paragraph</p>
+        <div>Block-level content contained within the list item</div>
+    </li>
+    <li>List item 2</li>
+    <li>List item 3</li>
 </ul>
 ~~~
 
-Example B:
+TIP: **Tip:** It is possible to place a `<div>` (or other block-level element) inside a list item *without* creating one or more preceding paragraphs, but only if the block element appears in the *first* list item. Consider the following examples:
+
+This works (though note that *list item 2* has a paragraph added):
+
 ~~~markdown
-- <div>THIS IS THE DIV</div>
+-   <div>Block-level content</div>
+-   list item 2
+-   list item 3
 ~~~
+
 ~~~html
 <ul>
-    <li><div>THIS IS THE DIV</div></li>
+    <li><div>Block-level content</div></li>
+    <li><p>list item 2</p></li>
+    <li>list item 3</li>
+</ul>
+~~~
+
+But this doesn't:
+
+~~~markdown
+-   <div>Block-level content</div>
+-   <div>Block-level content</div>
+-   list item 2
+-   list item 3
+~~~
+
+~~~html
+<ul>
+    <li><div>Block-level content</div></li>
+    <li></li>
+</ul>
+<div>Block-level content</div>
+<ul>
+    <li>list item 2</li>
+    <li>list item 3</li>
 </ul>
 ~~~
 
