@@ -353,7 +353,7 @@ You can expand the above trick to include certain additional attributes by using
 
 Markdown supports ordered (numbered), unordered (bulleted), and description lists. To create a list, simply start each list item with the appropriate ‘list marker’. The character used for the list marker will vary according to the type of list desired.
 
-The list marker sits at the left margin and should be followed by a certain number of spaces, like so:
+The list marker sits at the left margin, and should be followed by a certain number of spaces, like so:
 
 ~~~markdown
 -   Item content (1-char list marker + 3 spaces = 4 char indent)
@@ -361,7 +361,7 @@ The list marker sits at the left margin and should be followed by a certain numb
 25. Item content (3-char list marker + 1 space = 4 char indent)
 ~~~
 
-Notice how, in each case, the list item content is preceded by **a total of 4 characters** — the list marker makes up *some* of those 4 characters, and spaces make up the remainder. This allows the actual content of list items to align neatly with any text that has a standard 4-space (1-tab) indent.
+Notice how, in each case, the list item content is preceded by **a total of 4 characters** — the list marker makes up *some* of those 4 characters, and spaces make up the remainder. This allows the actual *content* of list items to align neatly with any text that has a standard 4-space (1-tab) indent.
 
 NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires fir list markers; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>.  
 &nbsp;  
@@ -425,7 +425,7 @@ TIP: **Tip:** Should you have a regular paragraph that just so happens to start 
 
 ### Description lists
 
-Description lists are only slightly more complicated. They consist of ‘terms’ and ‘descriptions’, rather like a dictionary (in older versions of HTML this list type was called a ‘Definition List’). In Markdown these take the form of a single-line term followed, on the next line, by a colon and the description for that term.
+Description lists are only slightly more complicated. They consist of ‘terms’ and ‘descriptions’, rather like a dictionary (in older versions of HTML this list type was called a Definition List). In Markdown these take the form of a single-line term followed, on the next line, by a colon and the description for that term.
 
 NOTE: **Note:** It is the *description* part of a description list that is technically considered a ‘list item’ and as such the colon is the ‘list marker’. It is therefore a good idea to follow the colon by 3 spaces, in order to keep to the 4-character indent format [described above](#lists).
 
