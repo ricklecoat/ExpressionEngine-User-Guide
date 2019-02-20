@@ -351,7 +351,7 @@ You can expand the above trick to include certain additional attributes by using
 
 [TOC=3]
 
-Markdown supports ordered (numbered), unordered (bulleted), and definition lists. To create a list, simply start each list item with the appropriate ‘list marker’. The character used for the list marker will vary according to the type of list desired.
+Markdown supports ordered (numbered), unordered (bulleted), and description lists. To create a list, simply start each list item with the appropriate ‘list marker’. The character used for the list marker will vary according to the type of list desired.
 
 The list marker sits at the left margin and should be followed by a certain number of spaces, like so:
 
@@ -423,13 +423,13 @@ If an ordered list starts with a number _other_ than 1, Markdown will honor that
 
 TIP: **Tip:** Should you have a regular paragraph that just so happens to start with a number-period-space sequence, you can avoid accidentally triggering an ordered list by using a [backslash escape](#backslash-escapes), eg. `40\. What a great Age!`
 
-### Definition lists
+### Description lists
 
-Definition lists are only slightly more complicated. They consist of terms and definitions, like a dictionary. In Markdown these take the form of a single-line term followed, on the next line, by a colon and the definition for that term.
+Description lists are only slightly more complicated. They consist of ‘terms’ and ‘descriptions’, rather like a dictionary (in older versions of HTML this list type was called a ‘Definition List’). In Markdown these take the form of a single-line term followed, on the next line, by a colon and the description for that term.
 
-NOTE: **Note:** It is the *definition* part of a definition list that is technically considered a ‘list item’ and as such the colon is the ‘list marker’. It is therefore a good idea to follow the colon by 3 spaces, in order to keep to the 4-character indent format [described above](#lists).
+NOTE: **Note:** It is the *description* part of a description list that is technically considered a ‘list item’ and as such the colon is the ‘list marker’. It is therefore a good idea to follow the colon by 3 spaces, in order to keep to the 4-character indent format [described above](#lists).
 
-Further terms must be separated from the previous definition by a blank line.
+Further terms must be separated from the previous description by a blank line.
 
 ~~~markdown
 Apple
@@ -447,9 +447,9 @@ Orange
     <dd>The fruit of an evergreen tree of the genus Citrus.</dd>
 </dl>
 ~~~
-TIP: **Tip:** Since it is treated as a ‘list item’ by Markdown, the *definition* can take advantage of features such as [lazy indenting](#lazy-indenting-of-text-in-list-items), [multiple paragraphs](#paragraphs-in-list-items), etc.
+TIP: **Tip:** Since it is treated as a ‘list item’ by Markdown, the *description* can take advantage of features such as [lazy indenting](#lazy-indenting-of-text-in-list-items), [multiple paragraphs](#paragraphs-in-list-items), etc.
 
-You can also have terms with more than one definition:
+You can also have terms with more than one description:
 ~~~markdown
 Apple
 :   Pomaceous fruit of plants of the genus Malus in
@@ -459,14 +459,14 @@ Apple
 Orange
 :   The fruit of an evergreen tree of the genus Citrus.
 ~~~
-You can also have definitions with more than one term:
+You can also have descriptions with more than one term:
 ~~~markdown
 Term 1
 Term 2
-:   Definition a
+:   Description a
 
 Term 3
-:   Definition b
+:   Description b
 ~~~
 
 ### Lazy indenting of text in list items
@@ -487,7 +487,7 @@ viverra nec, fringilla in, laoreet vitae, risus.
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
 Suspendisse id sem consectetuer libero luctus adipiscing.
 ~~~
-The same is true for the definition parts of a definition list (remember, it is the definition that is treated as a list item). The following two blocks will generate identical HTML:
+The same is true for the description parts of a description list (remember, it is the description that is treated as a list item). The following two blocks will generate identical HTML:
 ~~~markdown
 Mollusc
 :   An invertebrate of a large phylum which includes
@@ -539,20 +539,20 @@ List items may consist of multiple paragraphs. Each subsequent paragraph in a li
 
 TIP: **Tip:** This is a good example of how using to 4-character indenting format for list markers is advantageous.
 
-To wrap **definition** text in `<p>` tags, make sure that there is a line between the term and the definition.
+To wrap **description** text in `<p>` tags, make sure that there is a line between the term and the description.
 
 ~~~markdown
 Term 1
 
-:   This is a definition with two paragraphs. Lorem ipsum
+:   This is a description with two paragraphs. Lorem ipsum
     dolor sit amet, consectetuer adipiscing elit. Aliquam
     hendrerit mi posuere lectus.
 
-	The second paragaph of this definition. Vestibulum enim
+	The second paragaph of this description. Vestibulum enim
     vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
     sit amet velit.
 
-:   Second definition for term 1, also wrapped in a paragraph
+:   Second description for term 1, also wrapped in a paragraph
     because of the blank line preceding it.
 ~~~
 
