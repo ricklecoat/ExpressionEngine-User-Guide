@@ -797,6 +797,50 @@ You can apply span-level formatting to the content of each cell using regular Ma
 
 
 
+## Emphasis
+
+Asterisks (\*) and underscores (\_) are used to indicate emphasis. Text wrapped with a single \* or \_ will be wrapped with an HTML `<em>` tag; using double \*’s or double \_’s will wrap the text in a `<strong>` tag. So:
+~~~markdown
+*single asterisk*
+_single underscore_
+**double asterisks**
+__double underscore__
+~~~
+Generates:
+~~~html
+<em>single asterisk</em>
+<em>single underscore</em>
+<strong>double asterisks</strong>
+<strong>double underscore</strong>
+~~~
+You may use whichever style you prefer; the only restriction is that the same character must be used to open and close an emphasis span.
+
+You can use emphasis in the middle of a word, but in this situation you _must_ use asterisks — underscores will be treated literally. So:
+
+~~~markdown
+Abso*friggin*lutely
+Abso**friggin**lutely
+Abso_friggin_lutely
+Abso__friggin__lutely
+~~~
+Becomes:
+~~~html
+Abso<em>friggin</em>lutely
+Abso<strong>friggin</strong>lutely
+Abso_friggin_lutely
+Abso__friggin__lutely
+~~~
+
+When * or _ are surrounded with spaces they will always be treated as literal asterisks or underscores. If you wish to have either of these characters treated literally in a situation where they _cannot_ be surrounded by spaces, you can backslash-escape them like so:
+
+~~~
+\*Some text surrounded by literal asterisks\*
+~~~
+
+
+
+
+
 ## Links
 
 [TOC=3]
@@ -981,50 +1025,6 @@ TIP: **Tip:** Although you can use single quotes to delineate the title attribut
 Just as with [link](#links-reference-style) and [abbreviation](#abbreviations) definitions, image definitions can be placed anywhere in your document. They are stripped out during processing, and will not appear in the final output.
 
 Currently, Markdown has no syntax for specifying the dimensions of an image; if you need this then you can simply use regular HTML `<img>` tags.
-
-
-
-
-
-## Emphasis
-
-Asterisks (\*) and underscores (\_) are used to indicate emphasis. Text wrapped with a single \* or \_ will be wrapped with an HTML `<em>` tag; using double \*’s or double \_’s will wrap the text in a `<strong>` tag. So:
-~~~markdown
-*single asterisk*
-_single underscore_
-**double asterisks**
-__double underscore__
-~~~
-Generates:
-~~~html
-<em>single asterisk</em>
-<em>single underscore</em>
-<strong>double asterisks</strong>
-<strong>double underscore</strong>
-~~~
-You may use whichever style you prefer; the only restriction is that the same character must be used to open and close an emphasis span.
-
-You can use emphasis in the middle of a word, but in this situation you _must_ use asterisks — underscores will be treated literally. So:
-
-~~~markdown
-Abso*friggin*lutely
-Abso**friggin**lutely
-Abso_friggin_lutely
-Abso__friggin__lutely
-~~~
-Becomes:
-~~~html
-Abso<em>friggin</em>lutely
-Abso<strong>friggin</strong>lutely
-Abso_friggin_lutely
-Abso__friggin__lutely
-~~~
-
-When * or _ are surrounded with spaces they will always be treated as literal asterisks or underscores. If you wish to have either of these characters treated literally in a situation where they _cannot_ be surrounded by spaces, you can backslash-escape them like so:
-
-~~~
-\*Some text surrounded by literal asterisks\*
-~~~
 
 
 
