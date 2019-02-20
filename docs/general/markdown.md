@@ -355,10 +355,10 @@ Markdown supports ordered (numbered), unordered (bulleted), and description list
 
 The list marker sits at the left margin and should be followed by a certain number of spaces, like so:
 
-~~~
--   List item content (3 spaces placed after marker)
-1.  List item content (2 spaces placed after marker)
-25. List item content (1 space placed after marker)
+~~~markdown
+-   Item content (1-char list marker + 3 spaces = 4 char indent)
+1.  Item content (2-char list marker + 2 spaces = 4 char indent)
+25. Item content (3-char list marker + 1 space = 4 char indent)
 ~~~
 
 Notice how, in each case, the list item content is preceded by **a total of 4 characters** — the list marker makes up *some* of those 4 characters, and spaces make up the remainder. This allows the actual content of list items to align neatly with any text that has a standard 4-space (1-tab) indent.
