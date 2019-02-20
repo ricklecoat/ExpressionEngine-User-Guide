@@ -11,9 +11,9 @@
 
 [TOC]
 
-ExpressionEngine’s implementation of Markdown, for the most part, follows [Jon Gruber's implementation of Markdown](http://daringfireball.net/projects/markdown/), but it also uses syntax from a couple of other Markdown libraries to build upon Gruber’s foundation. Since each of these third party implementations has its own user guide, EE users previously needed to refer to multiple sources in order to obtain an overall guide to EE's Markdown syntax.  
+ExpressionEngine’s implementation of Markdown, for the most part, follows [Jon Gruber's original formulation](http://daringfireball.net/projects/markdown/), but it also uses syntax from a couple of other Markdown libraries that build upon, and amend, Gruber’s foundation — specifically: [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/#html) and [PHP SmartyPants](https://michelf.ca/projects/php-smartypants/). Each of these implementations has its own user guide, and EE users previously needed to refer to, and cross-reference, multiple third party sources in order to obtain an overall guide to using Markdown in ExpressionEngine.
 
-In order to remedy this situation we have combined and summarised those third party guides into a single, unified reference source on this page.
+To assist ExpressionEngine users we have therefore distilled those various third party guides into a single, unified reference source — not only combining them, but also clarifying situations where one guide might differ from, or overrule, another. Finally, where EE's implementation is still at odds with those combined third party sources, we have reflected those differences in the documentation here.
 
 
 
@@ -366,8 +366,6 @@ Notice how, in each case, the list item content is preceded by **a total of 4 ch
 NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires fir list markers; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>.  
 &nbsp;  
 However, several other things that Markdown lists allow — such as [inserting blockquotes](#blockquotes-in-list-items) or [code blocks](#code-blocks-in-list-items) into a list, [adding block-level HTML elements](#block-level-html-elements-in-lists), or [nesting lists inside each other](#nesting-lists) — require text to be correctly indented in 4-space increments. Thus, by building 4-character spacing into our list markers from the outset, we make working with nested list content *significantly* easier.
-
-
 
 
 ### Unordered lists
