@@ -355,7 +355,7 @@ Markdown supports ordered (numbered), unordered (bulleted), and definition lists
 
 The list marker sits at the left margin and should be followed by a certain number of spaces, like so:
 
-~~~markdown
+~~~
 -   List item content (3 spaces placed after marker)
 1.  List item content (2 spaces placed after marker)
 25. List item content (1 space placed after marker)
@@ -363,9 +363,9 @@ The list marker sits at the left margin and should be followed by a certain numb
 
 Notice how, in each case, the list item content is preceded by **a total of 4 characters** — the list marker makes up *some* of those 4 characters, and spaces make up the remainder. This allows the actual content of list items to align neatly with any text that has a standard 4-space (1-tab) indent.
 
-The benefit is that certain other features that Markdown makes available for lists — such as [adding block-level HTML](#block-level-html-elements-in-lists), or [nesting lists inside each other](#nesting-lists) — require text to be correctly aligned against a 4-space indent, and we make things significantly easier for ourselves if we build that spacing into our syntax from the outset.
-
-NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>. However, as noted above, keeping to the more rigid structure bring its own advantages.
+NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires fir list markers; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>.  
+&nbsp;  
+However, several other things that Markdown lists allow — such as [inserting blockquotes](#blockquotes-in-list-items) or [code blocks](#code-blocks-in-list-items) into a list, [adding block-level HTML elements](#block-level-html-elements-in-lists), or [nesting lists inside each other](#nesting-lists) — require text to be correctly indented in 4-space increments. Thus, by building 4-character spacing into our list markers from the outset, we make working with nested list content *significantly* easier.
 
 
 
@@ -429,7 +429,7 @@ TIP: **Tip:** Should you have a regular paragraph that just so happens to start 
 
 Definition lists are only slightly more complicated. They consist of terms and definitions, like a dictionary. In Markdown these take the form of a single-line term followed, on the next line, by a colon and the definition for that term.
 
-The colon is the list marker, and follows the standard rules for list markers: it typically sits at the left margin but may be indented by up to three spaces, and it must be followed by one or more spaces or a tab.
+NOTE: **Note:** It is the *definition* part of a definition list that is technically considered a ‘list item’ and as such the colon is the ‘list marker’. It is therefore a good idea to follow the colon by 3 spaces, in order to keep to the 4-character indent format [described above](#lists).
 
 Further terms must be separated from the previous definition by a blank line.
 
@@ -449,7 +449,7 @@ Orange
     <dd>The fruit of an evergreen tree of the genus Citrus.</dd>
 </dl>
 ~~~
-TIP: **Tip:** It is the *Definition* part of a Term/Definition pair that is treated as the list item by Markdown, and as such the definition can take advantage of features such as [optional indenting](#optional-indenting-text-in-list-items), and [multiple paragraphs](#paragraphs-in-list-items).
+TIP: **Tip:** Since it is treated as a ‘list item’ by Markdown, the *definition* can take advantage of features such as [lazy indenting](#lazy-indenting-of-text-in-list-items), [multiple paragraphs](#paragraphs-in-list-items), etc.
 
 You can also have terms with more than one definition:
 ~~~markdown
@@ -471,7 +471,7 @@ Term 3
 :   Definition b
 ~~~
 
-### Optional indenting text in list items
+### Lazy indenting of text in list items
 
 It looks neater, and could be considered more readable, if text in a list item is indented:
 ~~~markdown
@@ -539,7 +539,9 @@ List items may consist of multiple paragraphs. Each subsequent paragraph in a li
     because of the blank line preceding it.
 ~~~
 
-To wrap definition text in `<p>` tags, make sure that there is a line between the term and the definition.
+TIP: **Tip:** This is a good example of how using to 4-character indenting format for list markers is advantageous.
+
+To wrap **definition** text in `<p>` tags, make sure that there is a line between the term and the definition.
 
 ~~~markdown
 Term 1
