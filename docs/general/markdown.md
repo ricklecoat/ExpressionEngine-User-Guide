@@ -605,41 +605,59 @@ As with other contexts, Markdown is smart enough not to add extra (unwanted) `<p
 </ul>
 ~~~
 
-TIP: **Tip:** It is possible to place a `<div>` (or other block-level element) inside a list item *without* creating one or more preceding paragraphs, but only if the block element appears in the *first* list item. Consider the following examples:
+TIP: **Tip:** It is possible to place a `<div>` (or other block-level elements) inside a list item *without* creating one or more preceding paragraphs, but only if the block element appears in the *first* list item. Consider the following examples:
 
-This works (though note that *list item 2* has a paragraph added):
-
-~~~markdown
--   <div>Block-level content</div>
--   list item 2
--   list item 3
-~~~
+This works (note, however, that a paragraph gets added to *list item 2*):
 
 ~~~html
+<!-- Markdown -->
+-   <div>Block-level content in list item 1</div>
+-   list item 2
+-   list item 3
+
+<!-- Generated HTML -->
 <ul>
-    <li><div>Block-level content</div></li>
+    <li><div>Block-level content in list item 1</div></li>
     <li><p>list item 2</p></li>
     <li>list item 3</li>
 </ul>
 ~~~
 
-But this doesn't:
-
-~~~markdown
--   <div>Block-level content</div>
--   <div>Block-level content</div>
--   list item 2
--   list item 3
-~~~
+And this also works (and note that *list item 2* no longer receives a paragraph):
 
 ~~~html
+<!-- Markdown -->
+-   <div>Block-level content in list item 1</div>
+    <div>Block-level content in list item 1</div>
+-   list item 2
+-   list item 3
+
+<!-- Generated HTML -->
 <ul>
-    <li><div>Block-level content</div></li>
+    <li>
+        <div>Block-level content in list item 1</div>
+        <div>Block-level content in list item 1</div>
+    </li>
+    <li>list item 2</li>
+    <li>list item 3</li>
+</ul>
+~~~
+
+But this **doesn’t**, and creates a bit of a mess:
+
+~~~html
+<!-- Markdown -->
+-   List item 1
+-   <div>Block-level content in list item 2</div>
+-   list item 3
+
+<!-- Generated HTML -->
+<ul>
+    <li>List item 1</li>
     <li></li>
 </ul>
-<div>Block-level content</div>
+<div>Block-level content in list item 2</div>
 <ul>
-    <li>list item 2</li>
     <li>list item 3</li>
 </ul>
 ~~~
