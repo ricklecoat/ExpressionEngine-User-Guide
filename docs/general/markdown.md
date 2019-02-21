@@ -363,7 +363,7 @@ The list marker sits at the left margin, and should be followed by a certain num
 
 Notice how, in each case, the list item content is preceded by **a total of 4 characters** — the list marker makes up *some* of those 4 characters, and spaces make up the remainder. This allows the actual *content* of list items to align neatly with any text that has a standard 4-space (1-tab) indent.
 
-NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires fir list markers; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>.  
+NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires for list markers; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>.  
 &nbsp;  
 However, several other things that Markdown lists allow — such as [inserting blockquotes](#blockquotes-in-list-items) or [code blocks](#code-blocks-in-list-items) into a list, [adding block-level HTML elements](#block-level-html-elements-in-lists), or [nesting lists inside each other](#nesting-lists) — require text to be correctly indented in 4-space increments. Thus, by building 4-character spacing into our list markers from the outset, we make working with nested list content *significantly* easier.
 
