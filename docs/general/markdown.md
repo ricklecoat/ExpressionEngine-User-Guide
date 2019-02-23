@@ -11,9 +11,11 @@
 
 [TOC]
 
-ExpressionEngine’s implementation of Markdown, for the most part, follows [Jon Gruber's original formulation](http://daringfireball.net/projects/markdown/), but it also uses syntax from a couple of other Markdown libraries that build upon, and amend, Gruber’s foundation — specifically: [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/#html) and [PHP SmartyPants](https://michelf.ca/projects/php-smartypants/). Each of these implementations has its own user guide, and EE users previously needed to refer to, and cross-reference, multiple third party sources in order to obtain an overall guide to using Markdown in ExpressionEngine.
+ExpressionEngine’s implementation of Markdown follows, for the most part, [Jon Gruber's original formulation](http://daringfireball.net/projects/markdown/), but it also folds in features from a couple of other Markdown libraries that build upon, and amend, Gruber’s foundation — specifically: [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/#html) and [PHP SmartyPants](https://michelf.ca/projects/php-smartypants/). Each of these implementations and libraries has its own user guide. This means that EE users have, until now, needed to cross-reference multiple third party sources to obtain an overall guide to using Markdown in ExpressionEngine — and even then small, undocumented differences remained.
 
-To assist ExpressionEngine users we have therefore distilled those various third party guides into a single, unified reference source — not only combining them, but also clarifying situations where one guide might differ from, or overrule, another. Finally, where EE's implementation is still at odds with those combined third party sources, we have reflected those differences in the documentation here.
+As a remedy to that unsatisfactory situation, this page distils those various third party guides into a single, unified reference source — combining and streamlining them, and clarifying situations where one guide might contradict or trump another. This page also documents any instances where ExpressionEngine's implementation continues be at variance with the combined third party sources.
+
+To be clear: this page documents Markdown *as implemented in ExpressionEngine*. It may not be a reliable reference for Markdown in other contexts (such as GitHub), which typically have their own particular features.
 
 
 
