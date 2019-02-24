@@ -25,15 +25,21 @@ To be clear: this page documents Markdown *as implemented in ExpressionEngine*. 
 
 ### What is Markdown?
 
-_Markdown_ is a text-to-HTML conversion tool for web writers. Its syntax is intended for one purpose: to be used as a format for writing for the web. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, and have it converted to structurally valid HTML.
+<!--_Markdown_ is a text-to-HTML conversion tool for web writers. Its syntax is intended for one purpose: to be used as a format for writing for the web. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, and have it converted to structurally valid HTML.-->
 
-Readability is paramount, and a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. Indeed, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.
+Designed for web writers, _Markdown_ is a tool (and a syntax) designed to make it easy to write prose for the web. It allows the author to write fluidly using an easy-to-read, easy-to-write plain text format, whilst behind the scenes Markdown does the hard work of creating valid HTML.
 
-For more information about the philosophy and concepts behind Markdown, visit the relevant sections of [Daring Fireball](https://daringfireball.net/projects/markdown/syntax#philosophy).
+<!--Readability is paramount, and a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. Indeed, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.-->
+
+Document readability is a key aspect of Markdown's design. Any document formatted with Markdown should be able to be published as-is and still be completely readable, without looking like a lot of ‘tag soup’. Markdown’s syntax is, in large part, derived from techniques commonly used in plain text email — with formatting taking the form of simple punctuation characters.
+
+(For more about the principles and concepts behind Markdown, you can visit the relevant sections of [Daring Fireball](https://daringfireball.net/projects/markdown/syntax#philosophy)).
 
 ### What Markdown is not
 
-Markdown is not intended as a replacement for HTML, but rather to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
+<!--Markdown is not intended as a replacement for HTML, but rather to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).-->
+
+Markdown is not intended to replace HTML, but rather to make it easier for authors to write and edit *prose* destined for the web. Its syntax is deliberately small, ignoring structural concepts like page layout, and focusing instead upon on formatting issues that can be addressed through plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
 
 
 
