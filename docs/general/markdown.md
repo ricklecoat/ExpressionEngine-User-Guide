@@ -49,11 +49,11 @@ NOTE: **Further reading:** For more about the principles and concepts behind Mar
 
 [TOC=3]
 
-### Mixing HTML with Markdown
+For situations where you need formatting or structure not covered by Markdown’s syntax, you can simply use regular HTML. You don't even have to indicate that you’re switching from Markdown to HTML; just use the tags as you normally would.
 
-For any markup that is not covered by Markdown’s syntax, you simply use HTML itself. There’s no need to indicate that you’re switching from Markdown to HTML; you just use the tags.
+### Adding span-level HTML to Markdown
 
-Span-level HTML tags — `<span>`, `<cite>`, or `<del>`, for example — can be used anywhere in a Markdown block such as a paragraph, list item, header, table, blockquote, code block, etc. (You can even use regular HTML tags instead of Markdown formatting, if you are so inclined). For example:
+*Span*-level HTML tags such as `<span>`, `<cite>`, `<q>`, or `<del>` can be used anywhere in a Markdown block (eg. paragraph, list item, header, table, blockquote, code block, etc). You can even use regular HTML tags instead of Markdown formatting, if you feel so inclined. For example:
 
 ~~~html
 This <dfn title="A language for writing prose for the web">Markdown</dfn>
@@ -69,7 +69,17 @@ paragraph has some span-level <abbr title="Hyper Text Markup Language">HTML
 <!--
 The only restrictions are that block-level HTML elements — e.g. `<div>`, `<table>`, `<pre>`, `<p>`, etc. — must be separated from surrounding content by blank lines, and the start and end tags of the block should not be indented with tabs or spaces. Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. -->
 
-You can add block-level elements as you see fit (although do be aware of the indenting restriction spelled out in the note below), and Markdown is smart enough not to add extra (unwanted) `<p>` tags around HTML block-level tags. For example, to add a `<figure>` element to a Markdown article:
+### Adding block-level HTML to Markdown
+
+<!--Similarly, you can add block-level HTML elements as you see fit. It is a good idea to separate them from regular Markdown syntax with a blank line; additionally, be aware of the indenting restriction spelled out in the note below. Markdown will sensibly avoid adding unwanted `<p>` tags around block-level HTML elements. For example, to add a `<figure>` element to a Markdown article:-->
+
+You can, similarly, add *block*-level HTML elements as you see fit. There are just a couple of caveats:
+
+-   It is recommended to always separate your HTML block element from regular Markdown syntax with a blank line.
+-   Do not indent the opening tag of a block element by any more than three spaces. If you do, then Markdown's rules will cause it to be treated as a [code block](#code-blocks-indented).
+-   If the HTML block element is inside a Markdown-formatted list, there are one or two extra [things to watch out for](#block-level-html-elements-in-lists).
+
+Markdown will sensibly avoid adding unwanted `<p>` tags around block-level HTML elements. For example, to add a `<figure>` element to a Markdown article:
 
 ~~~html
 This is a regular paragraph.
@@ -97,7 +107,7 @@ then we end up with:
 <p>in the middle. That’s not allowed in HTML!</p>
 ~~~
 
-NOTE: **Note:** Do not indent the opening tag of a block element by more than three spaces. Any tag indented more than that will be treated as a [code block](#code-blocks-indented) according to standard Markdown rules.
+<!--NOTE: **Note:** Do not indent the opening tag of a block element by more than three spaces. Any tag indented more than that will be treated as a [code block](#code-blocks-indented) according to standard Markdown rules.-->
 
 ### Using Markdown inside HTML elements
 
