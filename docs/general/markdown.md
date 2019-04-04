@@ -11,9 +11,9 @@
 
 [TOC]
 
-ExpressionEngine’s implementation of Markdown follows, for the most part, [Jon Gruber's original formulation](http://daringfireball.net/projects/markdown/), but it also folds in features from a couple of other Markdown libraries that build upon, and amend, Gruber’s foundation — specifically: [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/#html) and [PHP SmartyPants](https://michelf.ca/projects/php-smartypants/). Each of these implementations and libraries has its own user guide. This means that EE users have, until now, needed to cross-reference multiple third party sources to obtain an overall guide to using Markdown in ExpressionEngine — and even then small, undocumented differences remained.
+ExpressionEngine’s implementation of Markdown follows, for the most part, [Jon Gruber's original formulation](http://daringfireball.net/projects/markdown/), but it also folds in features from a couple of other Markdown libraries that build upon, and amend, Gruber’s foundation — specifically: [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/#html) and [PHP SmartyPants](https://michelf.ca/projects/php-smartypants/). Each of these implementations and libraries has its own user guide. This means that EE users have, until now, needed to cross-reference multiple third party sources to obtain an overall guide to using Markdown in ExpressionEngine — and even then small, undocumented differences remained.
 
-As a remedy to that unsatisfactory situation, this page distils those various third party guides into a single, unified reference source — combining and streamlining them, and clarifying situations where one guide might contradict or trump another. This page also documents any instances where ExpressionEngine's implementation continues be at variance with the combined third party sources.
+As a remedy to that unsatisfactory situation, this page distils those various third party guides into a single, unified reference source — combining and streamlining them, and clarifying situations where one guide might contradict or trump another. This page also documents any instances where ExpressionEngine's implementation continues be at variance with the combined third party sources.
 
 To be clear: this page documents Markdown *as implemented in ExpressionEngine*. It may not be a reliable reference for Markdown in other contexts (such as GitHub), which typically have their own particular features.
 
@@ -31,15 +31,15 @@ Designed for web writers, _Markdown_ is a tool (and a syntax) designed to make i
 
 <!--Readability is paramount, and a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. Indeed, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.-->
 
-Document readability is a key aspect of Markdown's design. Any document formatted with Markdown should be able to be published as-is and still be completely readable, without looking like a lot of ‘tag soup’. Markdown’s syntax is, in large part, derived from techniques commonly used in plain text email — with formatting taking the form of simple punctuation characters.
-
-(For more about the principles and concepts behind Markdown, you can visit the relevant sections of [Daring Fireball](https://daringfireball.net/projects/markdown/syntax#philosophy)).
+Document readability is a key aspect of Markdown's design. Any document formatted with Markdown should be able to be published as-is and still be completely readable, without looking like a lot of ‘tag soup’. Formatting taking the form of simple punctuation characters, and Markdown’s syntax is, in large part, derived from the 'faux-styling' techniques commonly used in plain text email.
 
 ### What Markdown is not
 
 <!--Markdown is not intended as a replacement for HTML, but rather to make it easy to read, write, and edit _prose_. HTML is a publishing format; Markdown is a _writing_ format. Its formatting syntax is very small, corresponding only to a very small subset of HTML tags, and only addresses issues that can be conveyed in plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).-->
 
-Markdown is not intended to replace HTML, but rather to make it easier for authors to write and edit *prose* destined for the web. Its syntax is deliberately small, ignoring structural concepts like page layout, and focusing instead upon on formatting issues that can be addressed through plain text. For situations where more complicated HTML structures are required, Markdown allows for [Inline HTML](#inline-html).
+Markdown is not intended to replace HTML, but rather to make it easier for authors — who need not be HTML-fluent — to write and edit *prose* destined for the web. Its syntax is deliberately small, ignoring structural concepts like page layout, and focusing instead upon on content formatting that can be provided through plain text. (For situations where more complicated HTML structures are required, Markdown also permits [Inline HTML](#inline-html) to be used).
+
+NOTE: **Further reading:** For more about the principles and concepts behind Markdown, visit the relevant pages of the [Daring Fireball](https://daringfireball.net/projects/markdown/syntax#philosophy) website.
 
 
 
@@ -373,7 +373,7 @@ Notice how, in each case, the list item content is preceded by **a total of 4 ch
 
 NOTE: **Note:** Strictly speaking, this ‘4-character indent’ format is more rigid than Markdown actually requires for list markers; the original guidelines state simply that <q><i>…list markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab</i></q>.  
 &nbsp;  
-However, several other things that Markdown lists allow — such as [inserting blockquotes](#blockquotes-in-list-items) or [code blocks](#code-blocks-in-list-items) into a list, [adding block-level HTML elements](#block-level-html-elements-in-lists), or [nesting lists inside each other](#nesting-lists) — require text to be correctly indented in 4-space increments. Thus, by building 4-character spacing into our list markers from the outset, we make working with nested list content *significantly* easier.
+However, several other things that Markdown lists allow — such as [inserting blockquotes](#blockquotes-in-list-items) or [code blocks](#code-blocks-in-list-items) into a list, [adding block-level HTML elements](#block-level-html-elements-in-lists), or [nesting lists inside each other](#nesting-lists) — require text to be correctly indented in 4-space increments. Thus, by building 4-character spacing into our list markers from the outset, we make working with nested list content *significantly* easier.
 
 
 ### Unordered lists
@@ -921,7 +921,7 @@ The ‘implicit link name’ trick works even if the link text has spaces in it:
 [Awesome website]: http://example.com "Visit the awesome website"
 ~~~
 
-As previously noted, link definitions can be placed anywhere in your document, as they are stripped out during the conversion to HTML. The intention of reference-style links is to make your document significantly more readable — and, [as noted above](#what-is-markdown), readbility is a core objective of the Markdown syntax. Two common techniques to this end are to place them either immediately after the paragraph in which they are used, or to put them at the bottom of the document, like footnotes. An example of the former technique:
+As previously noted, link definitions can be placed anywhere in your document, as they are stripped out during the conversion to HTML. The intention of reference-style links is to make your document significantly more readable — and, [as noted above](#what-is-markdown), readbility is a core objective of the Markdown syntax. Two common techniques to this end are to place them either immediately after the paragraph in which they are used, or to put them at the bottom of the document, like footnotes. An example of the former technique:
 
 ~~~markdown
 In recent years it seems that [Google] [1] has dominated the search engine market
@@ -1237,7 +1237,7 @@ Or if using reference-style links and images, put it at the end of the definitio
 
 Markdown in ExpressionEngine employs some parts of the SmartyPants library to add some 'smart' typographic nicety to your prose. This allows authors to write using plain old 'straight' quotes, plain dashes (hyphens) and plain dots, safe in the knowledge that their final HTML document will contain curly quotes, en/em-dashes, and proper ellipses.
 
-NOTE: **Note:** These automatic substitutions will not take place within `<pre>`, `<code>`, `<kbd>`, or `<script>` tag blocks — contexts within which such changes may not be required or appropriate.
+NOTE: **Note:** These automatic substitutions will not take place within `<pre>`, `<code>`, `<kbd>`, or `<script>` tag blocks — contexts within which such changes may not be required or appropriate.
 
 The precise transformations that get applied are as follows:
 
